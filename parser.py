@@ -9,3 +9,5 @@ url = 'https://finviz.com/screener.ashx?v=111' #% (bank_id) # url страниц
 r = requests.get(url, headers = headers)
 with open('test.html', 'w', encoding="utf-8") as output_file:
   output_file.write(r.text)
+  print(sdf)
+  
