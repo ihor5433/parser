@@ -1,558 +1,719 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<title>Stock Screener - Overview </title>
-<meta name="description" content="Stock screener for investors and traders, financial visualizations.">
-<meta name="keywords" content="Stock Screener, Charts, Quotes, Maps, News, Financial Visualizations, Research, Trading Systems">
-<meta name="robots" content="noindex">
-<meta http-equiv="imagetoolbar" content="no">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Expires" content="-1">
-<link href="//fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css"><link rel="stylesheet" href="/finviz.css?rev=138" type="text/css">
-<link rel="icon" type="image/png" href="/favicon_2x.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon.png" sizes="16x16">
-<script src="/script/boxover.js?rev=210" type="text/javascript"></script>
-<script src="/script/lightup.js?rev=210" type="text/javascript"></script>
-<script type="text/javascript">FinvizSettings = {hasUserPremium: false, name: ""};</script><script type="text/javascript" src="/js/libs/shims.min.js?rev=210"></script><script type="text/javascript" src="/js/libs/d3-json.js?rev=210"></script>
-            <script type="text/javascript" src="/js/dist/runtime.bundle.js?rev=210"></script>
-            <script type="text/javascript" src="/js/dist/vendors.bundle.js?rev=210"></script>
-            <script type="text/javascript" src="/js/dist/header.bundle.js?rev=210"></script>
-        <script type="text/javascript">var portfolioRowsLimit=50;</script>
-<script src="script/screener.js?rev=210" type="text/javascript"></script>
-<script src="script/screener_free.js?rev=210" type="text/javascript"></script></head>
-<body onload="ScreenerInit();" style="margin:0" bgcolor="#ffffff">
-<div id="unsupported-browser">Your browser is no longer supported. Please, <a href="https://browser-update.org/update.html" target="_blank">upgrade your browser.</a></div>
-                <table class="header" width="100%" cellpadding="0" cellspacing="0" border="0" style="min-width: 1000px">
-                    <tr valign="top">
-                        <td>
-                            <script type="text/javascript">if(document.body.clientWidth>1500){document.write('<table align="center" width="1425px" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed; min-width: 1000px">')}else{document.write('<table align="center" width="95%" style="max-width: 1425px; min-width: 1000px; table-layout: fixed" cellpadding="0" cellspacing="0" border="0">')}</script>
-                                <tr>
-                                    <td width="30%">
-                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                            <tr>
-                                                <td height="50" valign="middle">
-                                                    <a href="/" class="logo"></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="search" id="search" style="padding-top: 4px">
-                                                    <form style="margin: 0">
-                                                        <input placeholder="Search ticker, company or profile" type="text" value="">
-                                                        <span class="fa fa-search"></span>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td valign="bottom" style="padding-bottom: 4px">
-                                        <div id="microbar_position" style="height: 31px"></div>
-                                    </td>
-                                    <td width="728" align="right" style="position:relative;"><div id="banner_position" style="position:absolute;right:0;top:0;overflow:hidden;height:96px"></div></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="1000" style="font-size:0">
-                            <img src="/gfx/nic2x2.gif" width="1000" height="1" border="0">
-                        </td>
-                    </tr>
-                </table>
-            <table class="navbar" width="100%" height="30" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                    <td height="30">
-                        <script type="text/javascript">if(document.body.clientWidth>1500){document.write('<table align="center" width="1425px" cellpadding="0" cellspacing="0" border="0" style="white-space: nowrap; min-width: 1000px">')}else{document.write('<table align="center" width="95%" style="max-width:1425px;white-space: nowrap;min-width: 1000px" cellpadding="0" cellspacing="0" border="0">')}</script>
-                            <tr height="30"><td><a class="nav-link  is-first" href="/">Home</a></td><td><a class="nav-link " href="/news.ashx">News</a></td><td><a class="nav-link is-active" href="/screener.ashx">Screener</a></td><td><a class="nav-link " href="/map.ashx">Maps</a></td><td><a class="nav-link " href="/groups.ashx">Groups</a></td><td><a class="nav-link " href="/portfolio.ashx">Portfolio</a></td><td><a class="nav-link " href="/insidertrading.ashx">Insider</a></td><td><a class="nav-link " href="/futures.ashx">Futures</a></td><td><a class="nav-link " href="/forex.ashx">Forex</a></td><td><a class="nav-link " href="/crypto.ashx">Crypto</a></td><td><a class="nav-link " href="/backtests.ashx">Backtests</a></td><td><a class="nav-link  is-elite" href="/elite.ashx">Elite</a></td><td style="width: 100%"></td>
-                                <td class="time" id="time"></td>
-                <td>
-                    <a href="/help/screener.ashx" class="nav-link is-help">
-                        <span class="fa fa-question-circle"></span>
-                        Help
-                    </a>
-                </td>
-                <td><a href="/login.ashx" class="nav-link sign-in">Login</a></td>
-                <td><a href="/register.ashx" class="nav-link sign-up">Register</a></td>
-            
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        <script type="text/javascript">if(document.body.clientWidth>1500){document.write('<table align="center" width="1425px" cellpadding="0" cellspacing="0" border="0">')}else{document.write('<table align="center" width="95%" style="max-width:1425px;" cellpadding="0" cellspacing="0" border="0">')}</script>
-<tr>
-<td>
-<table width="100%" cellpadding="0" cellspacing="0" border="0" background="gfx/top_menu_screener_shadow.gif">
-<tr><td><img src="gfx/nic2x2.gif" width="2" height="20" alt="" border="0"></td></tr>
-<tr>
-<td width="1%"></td>
-<td align="center" width="15%">
-<select id="screenerPresetsSelect" style="width:100%;" class="body-combo-text" onchange='ScreenerPresetsChange(value,"v=111")'>
-<option>My Presets</option>
-<option value="__save_screen">-Save Screen</option>
-<option value="__edit_screens">-Edit Screens</option>
-</select>
-</td>
-<td align="center" width="6%">
-<span class="body-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Order] body=[<table width=300><tr><td class='tooltip_tab'>Select the criteria by which the output information will be sorted. The order settings apply to all views. Use the <b>ascending</b> and <b>descending</b> option to invert the current order.<br><br> TIP: In table views you can click on top of a column to sort the table by the underlying values.</td></tr></table>] delay=[500]">Order:</span></td>
-<td align="left" width="20%">
-<select id="orderSelect" style="width:100%;" class="body-combo-text" onchange='window.location=document.getElementById("orderSelect").value'>
-<option value="screener.ashx?v=111&o=ticker">Ticker</option><option value="screener.ashx?v=111&o=company">Company</option><option value="screener.ashx?v=111&o=sector">Sector</option><option value="screener.ashx?v=111&o=industry">Industry</option><option value="screener.ashx?v=111&o=country">Country</option><option value="screener.ashx?v=111&o=marketcap">Market Cap.</option><option value="screener.ashx?v=111&o=pe">Price/Earnings</option><option value="screener.ashx?v=111&o=forwardpe">Forward Price/Earnings</option><option value="screener.ashx?v=111&o=peg">PEG (Price/Earnings/Growth)</option><option value="screener.ashx?v=111&o=ps">Price/Sales</option><option value="screener.ashx?v=111&o=pb">Price/Book</option><option value="screener.ashx?v=111&o=pc">Price/Cash</option><option value="screener.ashx?v=111&o=pfcf">Price/Free Cash Flow</option><option value="screener.ashx?v=111&o=dividendyield">Dividend Yield</option><option value="screener.ashx?v=111&o=payoutratio">Payout Ratio</option><option value="screener.ashx?v=111&o=eps">EPS (ttm)</option><option value="screener.ashx?v=111&o=epsyoy">EPS growth this year</option><option value="screener.ashx?v=111&o=epsyoy1">EPS growth next year</option><option value="screener.ashx?v=111&o=eps5years">EPS growth past 5 years</option><option value="screener.ashx?v=111&o=estltgrowth">EPS growth next 5 years</option><option value="screener.ashx?v=111&o=sales5years">Sales growth past 5 years</option><option value="screener.ashx?v=111&o=epsqoq">EPS growth qtr over qtr</option><option value="screener.ashx?v=111&o=salesqoq">Sales growth qtr over qtr</option><option value="screener.ashx?v=111&o=sharesoutstanding2">Shares Outstanding</option><option value="screener.ashx?v=111&o=sharesfloat">Shares Float</option><option value="screener.ashx?v=111&o=insiderown">Insider Ownership</option><option value="screener.ashx?v=111&o=insidertrans">Insider Transactions</option><option value="screener.ashx?v=111&o=instown">Institutional Ownership</option><option value="screener.ashx?v=111&o=insttrans">Institutional Transactions</option><option value="screener.ashx?v=111&o=shortinterestshare">Short Interest Share</option><option value="screener.ashx?v=111&o=shortinterestratio">Short Interest Ratio</option><option value="screener.ashx?v=111&o=earningsdate">Earnings Date</option><option value="screener.ashx?v=111&o=roa">Return on Assets</option><option value="screener.ashx?v=111&o=roe">Return on Equity</option><option value="screener.ashx?v=111&o=roi">Return on Investment</option><option value="screener.ashx?v=111&o=curratio">Current Ratio</option><option value="screener.ashx?v=111&o=quickratio">Quick Ratio</option><option value="screener.ashx?v=111&o=ltdebteq">LT Debt/Equity</option><option value="screener.ashx?v=111&o=debteq">Total Debt/Equity</option><option value="screener.ashx?v=111&o=grossmargin">Gross Margin</option><option value="screener.ashx?v=111&o=opermargin">Operating Margin</option><option value="screener.ashx?v=111&o=netmargin">Net Profit Margin</option><option value="screener.ashx?v=111&o=recom">Analyst Recommendation</option><option value="screener.ashx?v=111&o=perf1w">Performance (Week)</option><option value="screener.ashx?v=111&o=perf4w">Performance (Month)</option><option value="screener.ashx?v=111&o=perf13w">Performance (Quarter)</option><option value="screener.ashx?v=111&o=perf26w">Performance (Half Year)</option><option value="screener.ashx?v=111&o=perf52w">Performance (Year)</option><option value="screener.ashx?v=111&o=perfytd">Performance (Year To Date)</option><option value="screener.ashx?v=111&o=beta">Beta</option><option value="screener.ashx?v=111&o=averagetruerange">Average True Range</option><option value="screener.ashx?v=111&o=volatility1w">Volatility (Week)</option><option value="screener.ashx?v=111&o=volatility4w">Volatility (Month)</option><option value="screener.ashx?v=111&o=sma20">20-Day SMA (Relative)</option><option value="screener.ashx?v=111&o=sma50">50-Day SMA (Relative)</option><option value="screener.ashx?v=111&o=sma200">200-Day SMA (Relative)</option><option value="screener.ashx?v=111&o=high50d">50-Day High (Relative)</option><option value="screener.ashx?v=111&o=low50d">50-Day Low (Relative)</option><option value="screener.ashx?v=111&o=high52w">52-Week High (Relative)</option><option value="screener.ashx?v=111&o=low52w">52-Week Low (Relative)</option><option value="screener.ashx?v=111&o=rsi">Relative Strength Index (14)</option><option value="screener.ashx?v=111&o=averagevolume">Average Volume (3 Month)</option><option value="screener.ashx?v=111&o=relativevolume">Relative Volume</option><option value="screener.ashx?v=111&o=change">Change</option><option value="screener.ashx?v=111&o=changeopen">Change from Open</option><option value="screener.ashx?v=111&o=gap">Gap</option><option value="screener.ashx?v=111&o=volume">Volume</option><option value="screener.ashx?v=111&o=price">Price</option><option value="screener.ashx?v=111&o=targetprice">Target Price</option><option value="screener.ashx?v=111&o=ipodate">IPO Date</option></select>
-</td>
-<td align="left" width="6%">
-<select id="orderDirSelect" style="width: 100%;" class="body-combo-text" onchange='window.location=document.getElementById("orderDirSelect").value'>
-<option selected="selected" value="screener.ashx?v=111">Asc</option><option value="screener.ashx?v=111&o=-">Desc</option></select>
-</td>
-<td align="center" width="6%">
-<span class="body-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Signal] body=[<table width=300><tr><td class='tooltip_tab'>You can screen the stocks by signal - an event, by which traders usually enter or exit positions.</td></tr></table>] delay=[500]">Signal:</span></td>
-<td align="left" width="15%">
-<select id="signalSelect" style="width: 100%;"  class="body-combo-text" onchange='window.location=document.getElementById("signalSelect").value'>
-<option selected="selected" value="screener.ashx?v=111">None (all stocks)</option><option value="screener.ashx?v=111&s=ta_topgainers">Top Gainers</option><option value="screener.ashx?v=111&s=ta_toplosers">Top Losers</option><option value="screener.ashx?v=111&s=ta_newhigh">New High</option><option value="screener.ashx?v=111&s=ta_newlow">New Low</option><option value="screener.ashx?v=111&s=ta_mostvolatile">Most Volatile</option><option value="screener.ashx?v=111&s=ta_mostactive">Most Active</option><option value="screener.ashx?v=111&s=ta_unusualvolume">Unusual Volume</option><option value="screener.ashx?v=111&s=ta_overbought">Overbought</option><option value="screener.ashx?v=111&s=ta_oversold">Oversold</option><option value="screener.ashx?v=111&s=n_downgrades">Downgrades</option><option value="screener.ashx?v=111&s=n_upgrades">Upgrades</option><option value="screener.ashx?v=111&s=n_earningsbefore">Earnings Before</option><option value="screener.ashx?v=111&s=n_earningsafter">Earnings After</option><option value="screener.ashx?v=111&s=it_latestbuys">Recent Insider Buying</option><option value="screener.ashx?v=111&s=it_latestsales">Recent Insider Selling</option><option value="screener.ashx?v=111&s=n_majornews">Major News</option><option value="screener.ashx?v=111&s=ta_p_horizontal">Horizontal S/R</option><option value="screener.ashx?v=111&s=ta_p_tlresistance">TL Resistance</option><option value="screener.ashx?v=111&s=ta_p_tlsupport">TL Support</option><option value="screener.ashx?v=111&s=ta_p_wedgeup">Wedge Up</option><option value="screener.ashx?v=111&s=ta_p_wedgedown">Wedge Down</option><option value="screener.ashx?v=111&s=ta_p_wedgeresistance">Triangle Ascending</option><option value="screener.ashx?v=111&s=ta_p_wedgesupport">Triangle Descending</option><option value="screener.ashx?v=111&s=ta_p_wedge">Wedge</option><option value="screener.ashx?v=111&s=ta_p_channelup">Channel Up</option><option value="screener.ashx?v=111&s=ta_p_channeldown">Channel Down</option><option value="screener.ashx?v=111&s=ta_p_channel">Channel</option><option value="screener.ashx?v=111&s=ta_p_doubletop">Double Top</option><option value="screener.ashx?v=111&s=ta_p_doublebottom">Double Bottom</option><option value="screener.ashx?v=111&s=ta_p_multipletop">Multiple Top</option><option value="screener.ashx?v=111&s=ta_p_multiplebottom">Multiple Bottom</option><option value="screener.ashx?v=111&s=ta_p_headandshoulders">Head & Shoulders</option><option value="screener.ashx?v=111&s=ta_p_headandshouldersinv">Head & Shoulders Inverse</option></select>
-</td>
-<td align="center" width="6%">
-<span class="body-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Tickers] body=[<table width=300><tr><td class='tooltip_tab'>To screen through a selected set of stocks, you can enter one or more tickers directly, such as 'MSFT,GOOG,AAPL'. The screening process will run only on the specified stocks. No input ticker(s) equals all stocks. The <b>open in screener</b> option in the <b>Search</b>, will copy the listed tickers to the screener's ticker box automatically.</td></tr></table>] offsetx=[-100] delay=[500]">Tickers:</span></td>
-<td align="left" width="26%">
-<table width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
-<tr>
-<td align="left" width="100%">
-<input id="tickersInput" class="body-combo-text" style="width:100%" value="" type="text" onkeypress="if(event.keyCode==13){window.location='screener.ashx?v=111&t=' + TickersFormat(document.getElementById('tickersInput').value)}">
-</td>
-</tr>
-</table>
-</td>
-<td>
-<input type="button" value=">" title="Submit tickers" class="screener-combo-button" style="cursor:pointer" onclick="window.location='screener.ashx?v=111&t=' +tickersInput.value"/></td>
-<td align="left"><img src="gfx/nic2x2.gif" width="2" height="22" alt="" border="0"></td>
-<td align="left" valign="top"><a href="screener.ashx?v=110" class="filter_inv" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Filters] body=[<table width=300><tr><td class='tooltip_tab'>To optimize the screening by various stock-related criteria, you can use one or more <b>Filters</b>.</td></tr></table>] offsetx=[-305] delay=[500]">Filters <i class="arrow-up"></i></a></td>
-</tr>
-<tr><td colspan="30"><img src="gfx/nic2x2.gif" width="2" height="6" alt="" border="0"></td></tr>
-</table>
-</td>
-</tr>
-<tr><td colspan="30">
-<table width="100%" bgcolor="#a4a4a4" cellpadding="0" cellspacing="0" height="21" border="0">
-<tr class="screener-tabs-top-row">
-<td colspan="30" height="3"><img src="gfx/nic2x2.gif" alt="" border="0" height="3" width="3"></td></tr>
-<tr class="screener-tabs-body-row">
-<td width="50%"><img src="gfx/nic2x2.gif" alt="" border="0" height="2" width="10"><b>Filters:</b> 0</td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"></td>
-<td class="screener-tabs-selected" onmouseover="this.className='screener-tabs-selected-h';" onmouseout="this.className='screener-tabs-selected';" style="cursor:pointer;" onclick="window.location='screener.ashx?v=111'">&nbsp&nbsp Descriptive &nbsp&nbsp</td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"><img src="gfx/nic2x2.gif" width="2" height="2" alt="" border="0"></td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"></td>
-<td class="screener-tabs-gray" onmouseover="this.className='screener-tabs-gray-h';" onmouseout="this.className='screener-tabs-gray';" style="cursor:pointer;" onclick="window.location='screener.ashx?v=111&ft=2'">&nbsp&nbsp Fundamental &nbsp&nbsp</td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"><img src="gfx/nic2x2.gif" width="2" height="2" alt="" border="0"></td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"></td>
-<td class="screener-tabs-gray" onmouseover="this.className='screener-tabs-gray-h';" onmouseout="this.className='screener-tabs-gray';" style="cursor:pointer;" onclick="window.location='screener.ashx?v=111&ft=3'">&nbsp&nbsp Technical &nbsp&nbsp</td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"><img src="gfx/nic2x2.gif" width="2" height="2" alt="" border="0"></td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"></td>
-<td class="screener-tabs-gray" onmouseover="this.className='screener-tabs-gray-h';" onmouseout="this.className='screener-tabs-gray';" style="cursor:pointer;" onclick="window.location='screener.ashx?v=111&ft=4'">&nbsp&nbsp All &nbsp&nbsp</td>
-<td><img src="gfx/tabs_border.gif" width="1" height="18" alt="" border="0"><img src="gfx/nic2x2.gif" width="2" height="2" alt="" border="0"></td>
-<td width="50%" align="right"></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td colspan="30" valign="middle" align="center" class="filters-border">
-<table width="100%" cellpadding="1" cellspacing="1" style="table-layout:fixed;">
-<tr>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Exchange] body=[<table width=300><tr><td class='tooltip_tab'>Stock Exchange at which a stock is listed.</td></tr></table>] delay=[500]">Exchange</span></td>
-<td width="10%" class="filters-cells">
-
-                <div id="fsm_exch" class="js-custom-modal" style="display: none">
-                    <table style="border-collapse: collapse; table-layout: fixed;" cellpadding="0">
-                        <tr>
-                            <td style="position: relative">
-                                <input id="fsmi_exch" class="js-custom-modal-edit screener-input-text h" data-filter="exch" type="text" value="" style="width: 100%; padding-left: 2px; padding-right: 15px; cursor: pointer" readonly>
-                                <a href="#" class="js-custom-modal-edit" data-filter="exch" style="position: absolute; top: 4px; right: 4px"><img src="/gfx/btn_screener_edit.gif" border="0"></a>
-                            </td>
-                            <td width="13" style="padding-left: 3px">
-                                <a href="#" class="js-custom-modal-hide screener-input-hide" data-filter="exch"><img src="/gfx/btn_screener_close.gif" border="0"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div><select id="fs_exch" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="exch" data-url="v=111" data-url-selected="v=111&f=exch_selected_filter" data-selected="">
-<option selected="selected" value="">Any</option><option value="amex">AMEX</option><option value="nasd">NASDAQ</option><option value="nyse">NYSE</option><option value="modal">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Index] body=[<table width=300><tr><td class='tooltip_tab'>A major index membership of a stock.</td></tr></table>] delay=[500]">Index</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_idx" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="idx" data-url="v=111" data-url-selected="v=111&f=idx_selected_filter" >
-<option selected="selected" value="">Any</option><option value="sp500">S&amp;P 500</option><option value="dji">DJIA</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Sector] body=[<table width=300><tr><td class='tooltip_tab'>The sector which a stock belongs to.</td></tr></table>] delay=[500]">Sector</span></td>
-<td width="10%" class="filters-cells">
-
-                <div id="fsm_sec" class="js-custom-modal" style="display: none">
-                    <table style="border-collapse: collapse; table-layout: fixed;" cellpadding="0">
-                        <tr>
-                            <td style="position: relative">
-                                <input id="fsmi_sec" class="js-custom-modal-edit screener-input-text h" data-filter="sec" type="text" value="" style="width: 100%; padding-left: 2px; padding-right: 15px; cursor: pointer" readonly>
-                                <a href="#" class="js-custom-modal-edit" data-filter="sec" style="position: absolute; top: 4px; right: 4px"><img src="/gfx/btn_screener_edit.gif" border="0"></a>
-                            </td>
-                            <td width="13" style="padding-left: 3px">
-                                <a href="#" class="js-custom-modal-hide screener-input-hide" data-filter="sec"><img src="/gfx/btn_screener_close.gif" border="0"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div><select id="fs_sec" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sec" data-url="v=111" data-url-selected="v=111&f=sec_selected_filter" data-selected="">
-<option selected="selected" value="">Any</option><option value="basicmaterials">Basic Materials</option><option value="communicationservices">Communication Services</option><option value="consumercyclical">Consumer Cyclical</option><option value="consumerdefensive">Consumer Defensive</option><option value="energy">Energy</option><option value="financial">Financial</option><option value="healthcare">Healthcare</option><option value="industrials">Industrials</option><option value="realestate">Real Estate</option><option value="technology">Technology</option><option value="utilities">Utilities</option><option value="modal">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Industry] body=[<table width=300><tr><td class='tooltip_tab'>The industry which a stock belongs to.</td></tr></table>] delay=[500]">Industry</span></td>
-<td width="10%" class="filters-cells">
-
-                <div id="fsm_ind" class="js-custom-modal" style="display: none">
-                    <table style="border-collapse: collapse; table-layout: fixed;" cellpadding="0">
-                        <tr>
-                            <td style="position: relative">
-                                <input id="fsmi_ind" class="js-custom-modal-edit screener-input-text h" data-filter="ind" type="text" value="" style="width: 100%; padding-left: 2px; padding-right: 15px; cursor: pointer" readonly>
-                                <a href="#" class="js-custom-modal-edit" data-filter="ind" style="position: absolute; top: 4px; right: 4px"><img src="/gfx/btn_screener_edit.gif" border="0"></a>
-                            </td>
-                            <td width="13" style="padding-left: 3px">
-                                <a href="#" class="js-custom-modal-hide screener-input-hide" data-filter="ind"><img src="/gfx/btn_screener_close.gif" border="0"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div><select id="fs_ind" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="ind" data-url="v=111" data-url-selected="v=111&f=ind_selected_filter" data-selected="">
-<option selected="selected" value="">Any</option><option value="stocksonly">Stocks only (ex-Funds)</option><option value="exchangetradedfund">Exchange Traded Fund</option><option value="advertisingagencies">Advertising Agencies</option><option value="aerospacedefense">Aerospace &amp; Defense</option><option value="agriculturalinputs">Agricultural Inputs</option><option value="airlines">Airlines</option><option value="airportsairservices">Airports &amp; Air Services</option><option value="aluminum">Aluminum</option><option value="apparelmanufacturing">Apparel Manufacturing</option><option value="apparelretail">Apparel Retail</option><option value="assetmanagement">Asset Management</option><option value="automanufacturers">Auto Manufacturers</option><option value="autoparts">Auto Parts</option><option value="autotruckdealerships">Auto &amp; Truck Dealerships</option><option value="banksdiversified">Banks - Diversified</option><option value="banksregional">Banks - Regional</option><option value="beveragesbrewers">Beverages - Brewers</option><option value="beveragesnonalcoholic">Beverages - Non-Alcoholic</option><option value="beverageswineriesdistilleries">Beverages - Wineries &amp; Distilleries</option><option value="biotechnology">Biotechnology</option><option value="broadcasting">Broadcasting</option><option value="buildingmaterials">Building Materials</option><option value="buildingproductsequipment">Building Products &amp; Equipment</option><option value="businessequipmentsupplies">Business Equipment &amp; Supplies</option><option value="capitalmarkets">Capital Markets</option><option value="chemicals">Chemicals</option><option value="closedendfunddebt">Closed-End Fund - Debt</option><option value="closedendfundequity">Closed-End Fund - Equity</option><option value="closedendfundforeign">Closed-End Fund - Foreign</option><option value="cokingcoal">Coking Coal</option><option value="communicationequipment">Communication Equipment</option><option value="computerhardware">Computer Hardware</option><option value="confectioners">Confectioners</option><option value="conglomerates">Conglomerates</option><option value="consultingservices">Consulting Services</option><option value="consumerelectronics">Consumer Electronics</option><option value="copper">Copper</option><option value="creditservices">Credit Services</option><option value="departmentstores">Department Stores</option><option value="diagnosticsresearch">Diagnostics &amp; Research</option><option value="discountstores">Discount Stores</option><option value="drugmanufacturersgeneral">Drug Manufacturers - General</option><option value="drugmanufacturersspecialtygeneric">Drug Manufacturers - Specialty &amp; Generic</option><option value="educationtrainingservices">Education &amp; Training Services</option><option value="electricalequipmentparts">Electrical Equipment &amp; Parts</option><option value="electroniccomponents">Electronic Components</option><option value="electronicgamingmultimedia">Electronic Gaming &amp; Multimedia</option><option value="electronicscomputerdistribution">Electronics &amp; Computer Distribution</option><option value="engineeringconstruction">Engineering &amp; Construction</option><option value="entertainment">Entertainment</option><option value="exchangetradedfund">Exchange Traded Fund</option><option value="farmheavyconstructionmachinery">Farm &amp; Heavy Construction Machinery</option><option value="farmproducts">Farm Products</option><option value="financialconglomerates">Financial Conglomerates</option><option value="financialdatastockexchanges">Financial Data &amp; Stock Exchanges</option><option value="fooddistribution">Food Distribution</option><option value="footwearaccessories">Footwear &amp; Accessories</option><option value="furnishingsfixturesappliances">Furnishings, Fixtures &amp; Appliances</option><option value="gambling">Gambling</option><option value="gold">Gold</option><option value="grocerystores">Grocery Stores</option><option value="healthcareplans">Healthcare Plans</option><option value="healthinformationservices">Health Information Services</option><option value="homeimprovementretail">Home Improvement Retail</option><option value="householdpersonalproducts">Household &amp; Personal Products</option><option value="industrialdistribution">Industrial Distribution</option><option value="informationtechnologyservices">Information Technology Services</option><option value="infrastructureoperations">Infrastructure Operations</option><option value="insurancebrokers">Insurance Brokers</option><option value="insurancediversified">Insurance - Diversified</option><option value="insurancelife">Insurance - Life</option><option value="insurancepropertycasualty">Insurance - Property &amp; Casualty</option><option value="insurancereinsurance">Insurance - Reinsurance</option><option value="insurancespecialty">Insurance - Specialty</option><option value="integratedfreightlogistics">Integrated Freight &amp; Logistics</option><option value="internetcontentinformation">Internet Content &amp; Information</option><option value="internetretail">Internet Retail</option><option value="leisure">Leisure</option><option value="lodging">Lodging</option><option value="lumberwoodproduction">Lumber &amp; Wood Production</option><option value="luxurygoods">Luxury Goods</option><option value="marineshipping">Marine Shipping</option><option value="medicalcarefacilities">Medical Care Facilities</option><option value="medicaldevices">Medical Devices</option><option value="medicaldistribution">Medical Distribution</option><option value="medicalinstrumentssupplies">Medical Instruments &amp; Supplies</option><option value="metalfabrication">Metal Fabrication</option><option value="mortgagefinance">Mortgage Finance</option><option value="oilgasdrilling">Oil &amp; Gas Drilling</option><option value="oilgasep">Oil &amp; Gas E&amp;P</option><option value="oilgasequipmentservices">Oil &amp; Gas Equipment &amp; Services</option><option value="oilgasintegrated">Oil &amp; Gas Integrated</option><option value="oilgasmidstream">Oil &amp; Gas Midstream</option><option value="oilgasrefiningmarketing">Oil &amp; Gas Refining &amp; Marketing</option><option value="otherindustrialmetalsmining">Other Industrial Metals &amp; Mining</option><option value="otherpreciousmetalsmining">Other Precious Metals &amp; Mining</option><option value="packagedfoods">Packaged Foods</option><option value="packagingcontainers">Packaging &amp; Containers</option><option value="paperpaperproducts">Paper &amp; Paper Products</option><option value="personalservices">Personal Services</option><option value="pharmaceuticalretailers">Pharmaceutical Retailers</option><option value="pollutiontreatmentcontrols">Pollution &amp; Treatment Controls</option><option value="publishing">Publishing</option><option value="railroads">Railroads</option><option value="realestatedevelopment">Real Estate - Development</option><option value="realestatediversified">Real Estate - Diversified</option><option value="realestateservices">Real Estate Services</option><option value="recreationalvehicles">Recreational Vehicles</option><option value="reitdiversified">REIT - Diversified</option><option value="reithealthcarefacilities">REIT - Healthcare Facilities</option><option value="reithotelmotel">REIT - Hotel &amp; Motel</option><option value="reitindustrial">REIT - Industrial</option><option value="reitmortgage">REIT - Mortgage</option><option value="reitoffice">REIT - Office</option><option value="reitresidential">REIT - Residential</option><option value="reitretail">REIT - Retail</option><option value="reitspecialty">REIT - Specialty</option><option value="rentalleasingservices">Rental &amp; Leasing Services</option><option value="residentialconstruction">Residential Construction</option><option value="resortscasinos">Resorts &amp; Casinos</option><option value="restaurants">Restaurants</option><option value="scientifictechnicalinstruments">Scientific &amp; Technical Instruments</option><option value="securityprotectionservices">Security &amp; Protection Services</option><option value="semiconductorequipmentmaterials">Semiconductor Equipment &amp; Materials</option><option value="semiconductors">Semiconductors</option><option value="shellcompanies">Shell Companies</option><option value="silver">Silver</option><option value="softwareapplication">Software - Application</option><option value="softwareinfrastructure">Software - Infrastructure</option><option value="solar">Solar</option><option value="specialtybusinessservices">Specialty Business Services</option><option value="specialtychemicals">Specialty Chemicals</option><option value="specialtyindustrialmachinery">Specialty Industrial Machinery</option><option value="specialtyretail">Specialty Retail</option><option value="staffingemploymentservices">Staffing &amp; Employment Services</option><option value="steel">Steel</option><option value="telecomservices">Telecom Services</option><option value="textilemanufacturing">Textile Manufacturing</option><option value="thermalcoal">Thermal Coal</option><option value="tobacco">Tobacco</option><option value="toolsaccessories">Tools &amp; Accessories</option><option value="travelservices">Travel Services</option><option value="trucking">Trucking</option><option value="uranium">Uranium</option><option value="utilitiesdiversified">Utilities - Diversified</option><option value="utilitiesindependentpowerproducers">Utilities - Independent Power Producers</option><option value="utilitiesregulatedelectric">Utilities - Regulated Electric</option><option value="utilitiesregulatedgas">Utilities - Regulated Gas</option><option value="utilitiesregulatedwater">Utilities - Regulated Water</option><option value="utilitiesrenewable">Utilities - Renewable</option><option value="wastemanagement">Waste Management</option><option value="modal">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Country] body=[<table width=300><tr><td class='tooltip_tab'>The country where company of selected stock is based.</td></tr></table>] offsetx=[-305] delay=[500]">Country</span></td>
-<td width="10%" class="filters-cells">
-
-                <div id="fsm_geo" class="js-custom-modal" style="display: none">
-                    <table style="border-collapse: collapse; table-layout: fixed;" cellpadding="0">
-                        <tr>
-                            <td style="position: relative">
-                                <input id="fsmi_geo" class="js-custom-modal-edit screener-input-text h" data-filter="geo" type="text" value="" style="width: 100%; padding-left: 2px; padding-right: 15px; cursor: pointer" readonly>
-                                <a href="#" class="js-custom-modal-edit" data-filter="geo" style="position: absolute; top: 4px; right: 4px"><img src="/gfx/btn_screener_edit.gif" border="0"></a>
-                            </td>
-                            <td width="13" style="padding-left: 3px">
-                                <a href="#" class="js-custom-modal-hide screener-input-hide" data-filter="geo"><img src="/gfx/btn_screener_close.gif" border="0"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div><select id="fs_geo" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="geo" data-url="v=111" data-url-selected="v=111&f=geo_selected_filter" data-selected="">
-<option selected="selected" value="">Any</option><option value="usa">USA</option><option value="notusa">Foreign (ex-USA)</option><option value="asia">Asia</option><option value="europe">Europe</option><option value="latinamerica">Latin America</option><option value="bric">BRIC</option><option value="argentina">Argentina</option><option value="australia">Australia</option><option value="bahamas">Bahamas</option><option value="belgium">Belgium</option><option value="benelux">BeNeLux</option><option value="bermuda">Bermuda</option><option value="brazil">Brazil</option><option value="canada">Canada</option><option value="caymanislands">Cayman Islands</option><option value="chile">Chile</option><option value="china">China</option><option value="chinahongkong">China &amp; Hong Kong</option><option value="colombia">Colombia</option><option value="cyprus">Cyprus</option><option value="denmark">Denmark</option><option value="finland">Finland</option><option value="france">France</option><option value="germany">Germany</option><option value="greece">Greece</option><option value="hongkong">Hong Kong</option><option value="hungary">Hungary</option><option value="iceland">Iceland</option><option value="india">India</option><option value="indonesia">Indonesia</option><option value="ireland">Ireland</option><option value="israel">Israel</option><option value="italy">Italy</option><option value="japan">Japan</option><option value="kazakhstan">Kazakhstan</option><option value="luxembourg">Luxembourg</option><option value="malaysia">Malaysia</option><option value="malta">Malta</option><option value="mexico">Mexico</option><option value="monaco">Monaco</option><option value="netherlands">Netherlands</option><option value="newzealand">New Zealand</option><option value="norway">Norway</option><option value="panama">Panama</option><option value="peru">Peru</option><option value="philippines">Philippines</option><option value="portugal">Portugal</option><option value="russia">Russia</option><option value="singapore">Singapore</option><option value="southafrica">South Africa</option><option value="southkorea">South Korea</option><option value="spain">Spain</option><option value="sweden">Sweden</option><option value="switzerland">Switzerland</option><option value="taiwan">Taiwan</option><option value="turkey">Turkey</option><option value="unitedarabemirates">United Arab Emirates</option><option value="unitedkingdom">United Kingdom</option><option value="uruguay">Uruguay</option><option value="modal">Custom (Elite only)</option></select>
-</td>
-</tr><tr>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Market Capitalization] body=[<table width=300><tr><td class='tooltip_tab'>Equals The total dollar market value of all of a company's outstanding shares.</td></tr></table>] delay=[500]">Market Cap.</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_cap" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="cap" data-url="v=111" data-url-selected="v=111&f=cap_selected_filter" >
-<option selected="selected" value="">Any</option><option value="mega">Mega ($200bln and more)</option><option value="large">Large ($10bln to $200bln)</option><option value="mid">Mid ($2bln to $10bln)</option><option value="small">Small ($300mln to $2bln)</option><option value="micro">Micro ($50mln to $300mln)</option><option value="nano">Nano (under $50mln)</option><option value="largeover">+Large (over $10bln)</option><option value="midover">+Mid (over $2bln)</option><option value="smallover">+Small (over $300mln)</option><option value="microover">+Micro (over $50mln)</option><option value="largeunder">-Large (under $200bln)</option><option value="midunder">-Mid (under $10bln)</option><option value="smallunder">-Small (under $2bln)</option><option value="microunder">-Micro (under $300mln)</option><option value="frange">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Dividend Yield] body=[<table width=300><tr><td class='tooltip_tab'>The dividend yield equals the annual dividend per share divided by the stock’s price. This measurement tells what percentage return a company pays out to shareholders in the form of dividends.</td></tr></table>] delay=[500]">Dividend Yield</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_fa_div" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="fa_div" data-url="v=111" data-url-selected="v=111&f=fa_div_selected_filter" >
-<option selected="selected" value="">Any</option><option value="none">None (0%)</option><option value="pos">Positive (>0%)</option><option value="high">High (>5%)</option><option value="veryhigh">Very High (>10%)</option><option value="o1">Over 1%</option><option value="o2">Over 2%</option><option value="o3">Over 3%</option><option value="o4">Over 4%</option><option value="o5">Over 5%</option><option value="o6">Over 6%</option><option value="o7">Over 7%</option><option value="o8">Over 8%</option><option value="o9">Over 9%</option><option value="o10">Over 10%</option><option value="range">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Short Selling] body=[<table width=300><tr><td class='tooltip_tab'>The amount of short-selling transactions of given stock.</td></tr></table>] delay=[500]">Float Short</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_short" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_short" data-url="v=111" data-url-selected="v=111&f=sh_short_selected_filter" >
-<option selected="selected" value="">Any</option><option value="low">Low (<5%)</option><option value="high">High (>20%)</option><option value="u5">Under 5%</option><option value="u10">Under 10%</option><option value="u15">Under 15%</option><option value="u20">Under 20%</option><option value="u25">Under 25%</option><option value="u30">Under 30%</option><option value="o5">Over 5%</option><option value="o10">Over 10%</option><option value="o15">Over 15%</option><option value="o20">Over 20%</option><option value="o25">Over 25%</option><option value="o30">Over 30%</option><option value="range">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Analyst Recommendation] body=[<table width=300><tr><td class='tooltip_tab'>An outlook of a stock-market analyst on a stock.</td></tr></table>] delay=[500]">Analyst Recom.</span></td>
-<td width="10%" class="filters-cells">
-
-                <div id="fsm_an_recom" class="js-custom-modal" style="display: none">
-                    <table style="border-collapse: collapse; table-layout: fixed;" cellpadding="0">
-                        <tr>
-                            <td style="position: relative">
-                                <input id="fsmi_an_recom" class="js-custom-modal-edit screener-input-text h" data-filter="an_recom" type="text" value="" style="width: 100%; padding-left: 2px; padding-right: 15px; cursor: pointer" readonly>
-                                <a href="#" class="js-custom-modal-edit" data-filter="an_recom" style="position: absolute; top: 4px; right: 4px"><img src="/gfx/btn_screener_edit.gif" border="0"></a>
-                            </td>
-                            <td width="13" style="padding-left: 3px">
-                                <a href="#" class="js-custom-modal-hide screener-input-hide" data-filter="an_recom"><img src="/gfx/btn_screener_close.gif" border="0"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div><select id="fs_an_recom" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="an_recom" data-url="v=111" data-url-selected="v=111&f=an_recom_selected_filter" data-selected="">
-<option selected="selected" value="">Any</option><option value="strongbuy">Strong Buy (1)</option><option value="buybetter">Buy or better</option><option value="buy">Buy</option><option value="holdbetter">Hold or better</option><option value="hold">Hold</option><option value="holdworse">Hold or worse</option><option value="sell">Sell</option><option value="sellworse">Sell or worse</option><option value="strongsell">Strong Sell (5)</option><option value="modal">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Optionable/Shortable] body=[<table width=300><tr><td class='tooltip_tab'>Stocks with options and/or available to sell short.</td></tr></table>] delay=[500]">Option/Short</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_opt" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_opt" data-url="v=111" data-url-selected="v=111&f=sh_opt_selected_filter" >
-<option selected="selected" value="">Any</option><option value="option">Optionable</option><option value="short">Shortable</option><option value="optionshort">Optionable and shortable</option></select>
-</td>
-</tr><tr>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Earnings Date] body=[<table width=300><tr><td class='tooltip_tab'>Date when company reports earnings</td></tr></table>] delay=[500]">Earnings Date</span></td>
-<td width="10%" class="filters-cells">
-
-                <div id="fsm_earningsdate" class="js-custom-modal" style="display: none">
-                    <table style="border-collapse: collapse; table-layout: fixed;" cellpadding="0">
-                        <tr>
-                            <td style="position: relative">
-                                <input id="fsmi_earningsdate" class="js-custom-modal-edit screener-input-text h" data-filter="earningsdate" type="text" value="" style="width: 100%; padding-left: 2px; padding-right: 15px; cursor: pointer" readonly>
-                                <a href="#" class="js-custom-modal-edit" data-filter="earningsdate" style="position: absolute; top: 4px; right: 4px"><img src="/gfx/btn_screener_edit.gif" border="0"></a>
-                            </td>
-                            <td width="13" style="padding-left: 3px">
-                                <a href="#" class="js-custom-modal-hide screener-input-hide" data-filter="earningsdate"><img src="/gfx/btn_screener_close.gif" border="0"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div><select id="fs_earningsdate" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="earningsdate" data-url="v=111" data-url-selected="v=111&f=earningsdate_selected_filter" data-selected="">
-<option selected="selected" value="">Any</option><option value="today">Today</option><option value="todaybefore">Today Before Market Open</option><option value="todayafter">Today After Market Close</option><option value="tomorrow">Tomorrow</option><option value="tomorrowbefore">Tomorrow Before Market Open</option><option value="tomorrowafter">Tomorrow After Market Close</option><option value="yesterday">Yesterday</option><option value="yesterdaybefore">Yesterday Before Market Open</option><option value="yesterdayafter">Yesterday After Market Close</option><option value="nextdays5">Next 5 Days</option><option value="prevdays5">Previous 5 Days</option><option value="thisweek">This Week</option><option value="nextweek">Next Week</option><option value="prevweek">Previous Week</option><option value="thismonth">This Month</option><option value="modal">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Average Volume] body=[<table width=300><tr><td class='tooltip_tab'>The average number of shares traded in a security per day.</td></tr></table>] offsetx=[-305] delay=[500]">Average Volume</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_avgvol" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_avgvol" data-url="v=111" data-url-selected="v=111&f=sh_avgvol_selected_filter" >
-<option selected="selected" value="">Any</option><option value="u50">Under 50K</option><option value="u100">Under 100K</option><option value="u500">Under 500K</option><option value="u750">Under 750K</option><option value="u1000">Under 1M</option><option value="o50">Over 50K</option><option value="o100">Over 100K</option><option value="o200">Over 200K</option><option value="o300">Over 300K</option><option value="o400">Over 400K</option><option value="o500">Over 500K</option><option value="o750">Over 750K</option><option value="o1000">Over 1M</option><option value="o2000">Over 2M</option><option value="100to500">100K to 500K</option><option value="100to1000">100K to 1M</option><option value="500to1000">500K to 1M</option><option value="500to10000">500K to 10M</option><option value="range">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Relative Volume] body=[<table width=300><tr><td class='tooltip_tab'>Ratio between current volume and 3-month average, intraday adjusted.</td></tr></table>] offsetx=[-305] delay=[500]">Relative Volume</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_relvol" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_relvol" data-url="v=111" data-url-selected="v=111&f=sh_relvol_selected_filter" >
-<option selected="selected" value="">Any</option><option value="o10">Over 10</option><option value="o5">Over 5</option><option value="o3">Over 3</option><option value="o2">Over 2</option><option value="o1.5">Over 1.5</option><option value="o1">Over 1</option><option value="o0.75">Over 0.75</option><option value="o0.5">Over 0.5</option><option value="o0.25">Over 0.25</option><option value="u2">Under 2</option><option value="u1.5">Under 1.5</option><option value="u1">Under 1</option><option value="u0.75">Under 0.75</option><option value="u0.5">Under 0.5</option><option value="u0.25">Under 0.25</option><option value="u0.1">Under 0.1</option><option value="frange">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Current Volume] body=[<table width=300><tr><td class='tooltip_tab'>Number of shares traded today.</td></tr></table>] offsetx=[-305] delay=[500]">Current Volume</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_curvol" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_curvol" data-url="v=111" data-url-selected="v=111&f=sh_curvol_selected_filter" >
-<option selected="selected" value="">Any</option><option value="u50">Under 50K</option><option value="u100">Under 100K</option><option value="u500">Under 500K</option><option value="u750">Under 750K</option><option value="u1000">Under 1M</option><option value="o0">Over 0</option><option value="o50">Over 50K</option><option value="o100">Over 100K</option><option value="o200">Over 200K</option><option value="o300">Over 300K</option><option value="o400">Over 400K</option><option value="o500">Over 500K</option><option value="o750">Over 750K</option><option value="o1000">Over 1M</option><option value="o2000">Over 2M</option><option value="o5000">Over 5M</option><option value="o10000">Over 10M</option><option value="o20000">Over 20M</option><option value="range">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Price] body=[<table width=300><tr><td class='tooltip_tab'>The current stock price.</td></tr></table>] delay=[500]">Price</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_price" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_price" data-url="v=111" data-url-selected="v=111&f=sh_price_selected_filter" >
-<option selected="selected" value="">Any</option><option value="u1">Under $1</option><option value="u2">Under $2</option><option value="u3">Under $3</option><option value="u4">Under $4</option><option value="u5">Under $5</option><option value="u7">Under $7</option><option value="u10">Under $10</option><option value="u15">Under $15</option><option value="u20">Under $20</option><option value="u30">Under $30</option><option value="u40">Under $40</option><option value="u50">Under $50</option><option value="o1">Over $1</option><option value="o2">Over $2</option><option value="o3">Over $3</option><option value="o4">Over $4</option><option value="o5">Over $5</option><option value="o7">Over $7</option><option value="o10">Over $10</option><option value="o15">Over $15</option><option value="o20">Over $20</option><option value="o30">Over $30</option><option value="o40">Over $40</option><option value="o50">Over $50</option><option value="o60">Over $60</option><option value="o70">Over $70</option><option value="o80">Over $80</option><option value="o90">Over $90</option><option value="o100">Over $100</option><option value="1to5">$1 to $5</option><option value="1to10">$1 to $10</option><option value="1to20">$1 to $20</option><option value="5to10">$5 to $10</option><option value="5to20">$5 to $20</option><option value="5to50">$5 to $50</option><option value="10to20">$10 to $20</option><option value="10to50">$10 to $50</option><option value="20to50">$20 to $50</option><option value="50to100">$50 to $100</option><option value="range">Custom (Elite only)</option></select>
-</td>
-</tr><tr>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Target Price] body=[<table width=300><tr><td class='tooltip_tab'>Analysts' mean target price.</td></tr></table>] delay=[500]">Target Price</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_targetprice" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="targetprice" data-url="v=111" data-url-selected="v=111&f=targetprice_selected_filter" >
-<option selected="selected" value="">Any</option><option value="a50">50% Above Price</option><option value="a40">40% Above Price</option><option value="a30">30% Above Price</option><option value="a20">20% Above Price</option><option value="a10">10% Above Price</option><option value="a5">5% Above Price</option><option value="above">Above Price</option><option value="below">Below Price</option><option value="b5">5% Below Price</option><option value="b10">10% Below Price</option><option value="b20">20% Below Price</option><option value="b30">30% Below Price</option><option value="b40">40% Below Price</option><option value="b50">50% Below Price</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[IPO Date] body=[<table width=300><tr><td class='tooltip_tab'>Date when company had an IPO.</td></tr></table>] delay=[500]">IPO Date</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_ipodate" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="ipodate" data-url="v=111" data-url-selected="v=111&f=ipodate_selected_filter" >
-<option selected="selected" value="">Any</option><option value="today">Today</option><option value="yesterday">Yesterday</option><option value="prevweek">In the last week</option><option value="prevmonth">In the last month</option><option value="prevquarter">In the last quarter</option><option value="prevyear">In the last year</option><option value="prev2yrs">In the last 2 years</option><option value="prev3yrs">In the last 3 years</option><option value="prev5yrs">In the last 5 years</option><option value="more1">More than a year ago</option><option value="more5">More than 5 years ago</option><option value="more10">More than 10 years ago</option><option value="more15">More than 15 years ago</option><option value="more20">More than 20 years ago</option><option value="more25">More than 25 years ago</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Shares Outstanding] body=[<table width=300><tr><td class='tooltip_tab'>Shares outstanding represent the total number of shares issued by a corporation and held by its shareholders.</td></tr></table>] delay=[500]">Shares Outstanding</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_outstanding" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_outstanding" data-url="v=111" data-url-selected="v=111&f=sh_outstanding_selected_filter" >
-<option selected="selected" value="">Any</option><option value="u1">Under 1M</option><option value="u5">Under 5M</option><option value="u10">Under 10M</option><option value="u20">Under 20M</option><option value="u50">Under 50M</option><option value="u100">Under 100M</option><option value="o1">Over 1M</option><option value="o2">Over 2M</option><option value="o5">Over 5M</option><option value="o10">Over 10M</option><option value="o20">Over 20M</option><option value="o50">Over 50M</option><option value="o100">Over 100M</option><option value="o200">Over 200M</option><option value="o500">Over 500M</option><option value="o1000">Over 1000M</option><option value="range">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center">
-<span class="screener-combo-title" style="cursor:pointer;" title="cssbody=[tooltip_bdy] cssheader=[tooltip_hdr] header=[Float] body=[<table width=300><tr><td class='tooltip_tab'>Float is the number of stock shares that are available for trading to the public. This doesn't include shares held by insiders.</td></tr></table>] delay=[500]">Float</span></td>
-<td width="10%" class="filters-cells">
-<select id="fs_sh_float" style="width:100%" class="screener-combo-text" onchange="ScreenerSelectOnChange(this)" data-filter="sh_float" data-url="v=111" data-url-selected="v=111&f=sh_float_selected_filter" >
-<option selected="selected" value="">Any</option><option value="u1">Under 1M</option><option value="u5">Under 5M</option><option value="u10">Under 10M</option><option value="u20">Under 20M</option><option value="u50">Under 50M</option><option value="u100">Under 100M</option><option value="o1">Over 1M</option><option value="o2">Over 2M</option><option value="o5">Over 5M</option><option value="o10">Over 10M</option><option value="o20">Over 20M</option><option value="o50">Over 50M</option><option value="o100">Over 100M</option><option value="o200">Over 200M</option><option value="o500">Over 500M</option><option value="o1000">Over 1000M</option><option value="range">Custom (Elite only)</option></select>
-</td>
-<td width="10%" class="filters-cells" align="center"></td>
-<td width="10%" class="filters-cells" align="center">
-&nbsp;<input type="button" value="Reset (0)" class="screener-combo-button" style="height:18px" onclick="window.location='screener.ashx?v=111'"/></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<div id="screener-content">
-<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td width="100%">
-<table width="100%" cellpadding="3" cellspacing="0" class="screener-view-table">
-<tr>
-<td width="7%" align="center" class="screener-view-a" onmouseover="this.className='screener-view-a';" onmouseout="this.className='screener-view-a';" style="cursor:pointer;"><a href="screener.ashx?v=111">Overview</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=121">Valuation</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=161">Financial</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=131">Ownership</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=141">Performance</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=171">Technical</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=151">Custom</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=211">Charts</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=411">Tickers</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=311">Basic</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=351">TA</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=321">News</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=341">Snapshot</a></td>
-<td width="7%" align="center" class="screener-view" onmouseover="this.className='screener-view-h';" onmouseout="this.className='screener-view';" style="cursor:pointer;"><a href="screener.ashx?v=611">Stats</a></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td width="100%"><img src="gfx/nic2x2.gif" width="2" height="4" alt="" border="0"></td></tr>
-<tr>
-<td width="100%">
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td width="140" align="left" valign="bottom" class="count-text"><b>Total: </b>7539 #1</td>
-<td align="center" valign="bottom" class="fullview-links">
-<a href="javascript:SavePortfolio(7539,'v=111')" class="tab-link">save as portfolio</a> | 
-<a href="/create_alert_screener.ashx?v=111" class="tab-link">create alert</a>&nbsp;<img src="/gfx/nic2x2.gif" width="20" height="14" border="0">
-<span class="count-text"><b>Auto Refresh:</b></span> <a href="/screener.ashx?v=111&ar=180" class="tab-link ">3min</a> | <a href="/screener.ashx?v=111" class="tab-link active">off</a></td><td width="18" align="center"><span class="screener_arrow is-inactive is-prev"></span></td>
-<td width="10" align="right" valign="middle" class="count-text">
-<select id="pageSelect" style="width:auto;" class="pages-combo" onchange='url="screener.ashx?v=111&r=123456";row="r=" + document.getElementById("pageSelect").value;url=url.replace(/r=123456/,row);window.location=url;'>
-<option selected="selected" value=1>Page 1/377</option><option value=21>Page 2/377</option><option value=41>Page 3/377</option><option value=61>Page 4/377</option><option value=81>Page 5/377</option><option value=101>Page 6/377</option><option value=121>Page 7/377</option><option value=141>Page 8/377</option><option value=161>Page 9/377</option><option value=181>Page 10/377</option><option value=201>Page 11/377</option><option value=221>Page 12/377</option><option value=241>Page 13/377</option><option value=261>Page 14/377</option><option value=281>Page 15/377</option><option value=301>Page 16/377</option><option value=321>Page 17/377</option><option value=341>Page 18/377</option><option value=361>Page 19/377</option><option value=381>Page 20/377</option><option value=401>Page 21/377</option><option value=421>Page 22/377</option><option value=441>Page 23/377</option><option value=461>Page 24/377</option><option value=481>Page 25/377</option><option value=501>Page 26/377</option><option value=521>Page 27/377</option><option value=541>Page 28/377</option><option value=561>Page 29/377</option><option value=581>Page 30/377</option><option value=601>Page 31/377</option><option value=621>Page 32/377</option><option value=641>Page 33/377</option><option value=661>Page 34/377</option><option value=681>Page 35/377</option><option value=701>Page 36/377</option><option value=721>Page 37/377</option><option value=741>Page 38/377</option><option value=761>Page 39/377</option><option value=781>Page 40/377</option><option value=801>Page 41/377</option><option value=821>Page 42/377</option><option value=841>Page 43/377</option><option value=861>Page 44/377</option><option value=881>Page 45/377</option><option value=901>Page 46/377</option><option value=921>Page 47/377</option><option value=941>Page 48/377</option><option value=961>Page 49/377</option><option value=981>Page 50/377</option><option value=1001>Page 51/377</option><option value=1021>Page 52/377</option><option value=1041>Page 53/377</option><option value=1061>Page 54/377</option><option value=1081>Page 55/377</option><option value=1101>Page 56/377</option><option value=1121>Page 57/377</option><option value=1141>Page 58/377</option><option value=1161>Page 59/377</option><option value=1181>Page 60/377</option><option value=1201>Page 61/377</option><option value=1221>Page 62/377</option><option value=1241>Page 63/377</option><option value=1261>Page 64/377</option><option value=1281>Page 65/377</option><option value=1301>Page 66/377</option><option value=1321>Page 67/377</option><option value=1341>Page 68/377</option><option value=1361>Page 69/377</option><option value=1381>Page 70/377</option><option value=1401>Page 71/377</option><option value=1421>Page 72/377</option><option value=1441>Page 73/377</option><option value=1461>Page 74/377</option><option value=1481>Page 75/377</option><option value=1501>Page 76/377</option><option value=1521>Page 77/377</option><option value=1541>Page 78/377</option><option value=1561>Page 79/377</option><option value=1581>Page 80/377</option><option value=1601>Page 81/377</option><option value=1621>Page 82/377</option><option value=1641>Page 83/377</option><option value=1661>Page 84/377</option><option value=1681>Page 85/377</option><option value=1701>Page 86/377</option><option value=1721>Page 87/377</option><option value=1741>Page 88/377</option><option value=1761>Page 89/377</option><option value=1781>Page 90/377</option><option value=1801>Page 91/377</option><option value=1821>Page 92/377</option><option value=1841>Page 93/377</option><option value=1861>Page 94/377</option><option value=1881>Page 95/377</option><option value=1901>Page 96/377</option><option value=1921>Page 97/377</option><option value=1941>Page 98/377</option><option value=1961>Page 99/377</option><option value=1981>Page 100/377</option><option value=2001>Page 101/377</option><option value=2021>Page 102/377</option><option value=2041>Page 103/377</option><option value=2061>Page 104/377</option><option value=2081>Page 105/377</option><option value=2101>Page 106/377</option><option value=2121>Page 107/377</option><option value=2141>Page 108/377</option><option value=2161>Page 109/377</option><option value=2181>Page 110/377</option><option value=2201>Page 111/377</option><option value=2221>Page 112/377</option><option value=2241>Page 113/377</option><option value=2261>Page 114/377</option><option value=2281>Page 115/377</option><option value=2301>Page 116/377</option><option value=2321>Page 117/377</option><option value=2341>Page 118/377</option><option value=2361>Page 119/377</option><option value=2381>Page 120/377</option><option value=2401>Page 121/377</option><option value=2421>Page 122/377</option><option value=2441>Page 123/377</option><option value=2461>Page 124/377</option><option value=2481>Page 125/377</option><option value=2501>Page 126/377</option><option value=2521>Page 127/377</option><option value=2541>Page 128/377</option><option value=2561>Page 129/377</option><option value=2581>Page 130/377</option><option value=2601>Page 131/377</option><option value=2621>Page 132/377</option><option value=2641>Page 133/377</option><option value=2661>Page 134/377</option><option value=2681>Page 135/377</option><option value=2701>Page 136/377</option><option value=2721>Page 137/377</option><option value=2741>Page 138/377</option><option value=2761>Page 139/377</option><option value=2781>Page 140/377</option><option value=2801>Page 141/377</option><option value=2821>Page 142/377</option><option value=2841>Page 143/377</option><option value=2861>Page 144/377</option><option value=2881>Page 145/377</option><option value=2901>Page 146/377</option><option value=2921>Page 147/377</option><option value=2941>Page 148/377</option><option value=2961>Page 149/377</option><option value=2981>Page 150/377</option><option value=3001>Page 151/377</option><option value=3021>Page 152/377</option><option value=3041>Page 153/377</option><option value=3061>Page 154/377</option><option value=3081>Page 155/377</option><option value=3101>Page 156/377</option><option value=3121>Page 157/377</option><option value=3141>Page 158/377</option><option value=3161>Page 159/377</option><option value=3181>Page 160/377</option><option value=3201>Page 161/377</option><option value=3221>Page 162/377</option><option value=3241>Page 163/377</option><option value=3261>Page 164/377</option><option value=3281>Page 165/377</option><option value=3301>Page 166/377</option><option value=3321>Page 167/377</option><option value=3341>Page 168/377</option><option value=3361>Page 169/377</option><option value=3381>Page 170/377</option><option value=3401>Page 171/377</option><option value=3421>Page 172/377</option><option value=3441>Page 173/377</option><option value=3461>Page 174/377</option><option value=3481>Page 175/377</option><option value=3501>Page 176/377</option><option value=3521>Page 177/377</option><option value=3541>Page 178/377</option><option value=3561>Page 179/377</option><option value=3581>Page 180/377</option><option value=3601>Page 181/377</option><option value=3621>Page 182/377</option><option value=3641>Page 183/377</option><option value=3661>Page 184/377</option><option value=3681>Page 185/377</option><option value=3701>Page 186/377</option><option value=3721>Page 187/377</option><option value=3741>Page 188/377</option><option value=3761>Page 189/377</option><option value=3781>Page 190/377</option><option value=3801>Page 191/377</option><option value=3821>Page 192/377</option><option value=3841>Page 193/377</option><option value=3861>Page 194/377</option><option value=3881>Page 195/377</option><option value=3901>Page 196/377</option><option value=3921>Page 197/377</option><option value=3941>Page 198/377</option><option value=3961>Page 199/377</option><option value=3981>Page 200/377</option><option value=4001>Page 201/377</option><option value=4021>Page 202/377</option><option value=4041>Page 203/377</option><option value=4061>Page 204/377</option><option value=4081>Page 205/377</option><option value=4101>Page 206/377</option><option value=4121>Page 207/377</option><option value=4141>Page 208/377</option><option value=4161>Page 209/377</option><option value=4181>Page 210/377</option><option value=4201>Page 211/377</option><option value=4221>Page 212/377</option><option value=4241>Page 213/377</option><option value=4261>Page 214/377</option><option value=4281>Page 215/377</option><option value=4301>Page 216/377</option><option value=4321>Page 217/377</option><option value=4341>Page 218/377</option><option value=4361>Page 219/377</option><option value=4381>Page 220/377</option><option value=4401>Page 221/377</option><option value=4421>Page 222/377</option><option value=4441>Page 223/377</option><option value=4461>Page 224/377</option><option value=4481>Page 225/377</option><option value=4501>Page 226/377</option><option value=4521>Page 227/377</option><option value=4541>Page 228/377</option><option value=4561>Page 229/377</option><option value=4581>Page 230/377</option><option value=4601>Page 231/377</option><option value=4621>Page 232/377</option><option value=4641>Page 233/377</option><option value=4661>Page 234/377</option><option value=4681>Page 235/377</option><option value=4701>Page 236/377</option><option value=4721>Page 237/377</option><option value=4741>Page 238/377</option><option value=4761>Page 239/377</option><option value=4781>Page 240/377</option><option value=4801>Page 241/377</option><option value=4821>Page 242/377</option><option value=4841>Page 243/377</option><option value=4861>Page 244/377</option><option value=4881>Page 245/377</option><option value=4901>Page 246/377</option><option value=4921>Page 247/377</option><option value=4941>Page 248/377</option><option value=4961>Page 249/377</option><option value=4981>Page 250/377</option><option value=5001>Page 251/377</option><option value=5021>Page 252/377</option><option value=5041>Page 253/377</option><option value=5061>Page 254/377</option><option value=5081>Page 255/377</option><option value=5101>Page 256/377</option><option value=5121>Page 257/377</option><option value=5141>Page 258/377</option><option value=5161>Page 259/377</option><option value=5181>Page 260/377</option><option value=5201>Page 261/377</option><option value=5221>Page 262/377</option><option value=5241>Page 263/377</option><option value=5261>Page 264/377</option><option value=5281>Page 265/377</option><option value=5301>Page 266/377</option><option value=5321>Page 267/377</option><option value=5341>Page 268/377</option><option value=5361>Page 269/377</option><option value=5381>Page 270/377</option><option value=5401>Page 271/377</option><option value=5421>Page 272/377</option><option value=5441>Page 273/377</option><option value=5461>Page 274/377</option><option value=5481>Page 275/377</option><option value=5501>Page 276/377</option><option value=5521>Page 277/377</option><option value=5541>Page 278/377</option><option value=5561>Page 279/377</option><option value=5581>Page 280/377</option><option value=5601>Page 281/377</option><option value=5621>Page 282/377</option><option value=5641>Page 283/377</option><option value=5661>Page 284/377</option><option value=5681>Page 285/377</option><option value=5701>Page 286/377</option><option value=5721>Page 287/377</option><option value=5741>Page 288/377</option><option value=5761>Page 289/377</option><option value=5781>Page 290/377</option><option value=5801>Page 291/377</option><option value=5821>Page 292/377</option><option value=5841>Page 293/377</option><option value=5861>Page 294/377</option><option value=5881>Page 295/377</option><option value=5901>Page 296/377</option><option value=5921>Page 297/377</option><option value=5941>Page 298/377</option><option value=5961>Page 299/377</option><option value=5981>Page 300/377</option><option value=6001>Page 301/377</option><option value=6021>Page 302/377</option><option value=6041>Page 303/377</option><option value=6061>Page 304/377</option><option value=6081>Page 305/377</option><option value=6101>Page 306/377</option><option value=6121>Page 307/377</option><option value=6141>Page 308/377</option><option value=6161>Page 309/377</option><option value=6181>Page 310/377</option><option value=6201>Page 311/377</option><option value=6221>Page 312/377</option><option value=6241>Page 313/377</option><option value=6261>Page 314/377</option><option value=6281>Page 315/377</option><option value=6301>Page 316/377</option><option value=6321>Page 317/377</option><option value=6341>Page 318/377</option><option value=6361>Page 319/377</option><option value=6381>Page 320/377</option><option value=6401>Page 321/377</option><option value=6421>Page 322/377</option><option value=6441>Page 323/377</option><option value=6461>Page 324/377</option><option value=6481>Page 325/377</option><option value=6501>Page 326/377</option><option value=6521>Page 327/377</option><option value=6541>Page 328/377</option><option value=6561>Page 329/377</option><option value=6581>Page 330/377</option><option value=6601>Page 331/377</option><option value=6621>Page 332/377</option><option value=6641>Page 333/377</option><option value=6661>Page 334/377</option><option value=6681>Page 335/377</option><option value=6701>Page 336/377</option><option value=6721>Page 337/377</option><option value=6741>Page 338/377</option><option value=6761>Page 339/377</option><option value=6781>Page 340/377</option><option value=6801>Page 341/377</option><option value=6821>Page 342/377</option><option value=6841>Page 343/377</option><option value=6861>Page 344/377</option><option value=6881>Page 345/377</option><option value=6901>Page 346/377</option><option value=6921>Page 347/377</option><option value=6941>Page 348/377</option><option value=6961>Page 349/377</option><option value=6981>Page 350/377</option><option value=7001>Page 351/377</option><option value=7021>Page 352/377</option><option value=7041>Page 353/377</option><option value=7061>Page 354/377</option><option value=7081>Page 355/377</option><option value=7101>Page 356/377</option><option value=7121>Page 357/377</option><option value=7141>Page 358/377</option><option value=7161>Page 359/377</option><option value=7181>Page 360/377</option><option value=7201>Page 361/377</option><option value=7221>Page 362/377</option><option value=7241>Page 363/377</option><option value=7261>Page 364/377</option><option value=7281>Page 365/377</option><option value=7301>Page 366/377</option><option value=7321>Page 367/377</option><option value=7341>Page 368/377</option><option value=7361>Page 369/377</option><option value=7381>Page 370/377</option><option value=7401>Page 371/377</option><option value=7421>Page 372/377</option><option value=7441>Page 373/377</option><option value=7461>Page 374/377</option><option value=7481>Page 375/377</option><option value=7501>Page 376/377</option><option value=7521>Page 377/377</option></select>
-</td>
-<td width="18" align="center"><a href="screener.ashx?v=111&r=21" class="screener_arrow"></a></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td>
-<table width="100%" cellpadding="3" cellspacing="1" border="0" bgcolor="#d3d3d3">
-<tr align="center" valign="middle">
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111'" style="cursor:pointer;">No.</td>
-<td class="table-top-s" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top-s';" onclick="window.location='screener.ashx?v=111&o=-ticker'" style="cursor:pointer;"><img align="top" src="gfx/tab_arrow_u.gif" width="14" height="10" alt="" border="0">Ticker</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=company'" style="cursor:pointer;">Company</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=sector'" style="cursor:pointer;">Sector</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=industry'" style="cursor:pointer;">Industry</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=country'" style="cursor:pointer;">Country</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=marketcap'" style="cursor:pointer;">Market Cap</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=pe'" style="cursor:pointer;">P/E</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=price'" style="cursor:pointer;">Price</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=change'" style="cursor:pointer;">Change</td>
-<td class="table-top" onmouseover="this.className='table-top-h';" onmouseout="this.className='table-top';" onclick="window.location='screener.ashx?v=111&o=volume'" style="cursor:pointer;">Volume</td>
-<tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">1</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=A'><br>&nbsp;<b>Agilent Technologies, Inc.</b><br>&nbsp;Diagnostics & Research | USA | 30.04B] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link-primary">A</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">Agilent Technologies, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">Healthcare</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">Diagnostics & Research</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">30.04B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">44.80</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=A'><br>&nbsp;<b>Agilent Technologies, Inc.</b><br>&nbsp;Diagnostics & Research | USA | 30.04B] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">97.63</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">1.38%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=A&ty=c&p=d&b=1" class="screener-link">1,318,189</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">2</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AA'><br>&nbsp;<b>Alcoa Corporation</b><br>&nbsp;Aluminum | USA | 2.83B] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link-primary">AA</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">Alcoa Corporation</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">Basic Materials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">Aluminum</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">2.83B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AA'><br>&nbsp;<b>Alcoa Corporation</b><br>&nbsp;Aluminum | USA | 2.83B] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">14.96</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">0.47%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AA&ty=c&p=d&b=1" class="screener-link">3,987,737</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">3</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAAU'><br>&nbsp;<b>Perth Mint Physical Gold ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link-primary">AAAU</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">Perth Mint Physical Gold ETF</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">Exchange Traded Fund</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAAU'><br>&nbsp;<b>Perth Mint Physical Gold ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">19.03</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-0.26%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAAU&ty=c&p=d&b=1" class="screener-link">587,641</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">4</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AACG'><br>&nbsp;<b>ATA Creativity Global</b><br>&nbsp;Education & Training Services | China | 34.98M] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link-primary">AACG</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">ATA Creativity Global</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">Consumer Defensive</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">Education & Training Services</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">China</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">34.98M</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AACG'><br>&nbsp;<b>ATA Creativity Global</b><br>&nbsp;Education & Training Services | China | 34.98M] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">1.10</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-4.35%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACG&ty=c&p=d&b=1" class="screener-link">50,561</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">5</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AACQU'><br>&nbsp;<b>Artius Acquisition Inc.</b><br>&nbsp;Shell Companies | USA | -] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link-primary">AACQU</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">Artius Acquisition Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">Shell Companies</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AACQU'><br>&nbsp;<b>Artius Acquisition Inc.</b><br>&nbsp;Shell Companies | USA | -] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">10.15</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-0.49%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AACQU&ty=c&p=d&b=1" class="screener-link">411,883</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">6</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AADR'><br>&nbsp;<b>AdvisorShares Dorsey Wright ADR ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link-primary">AADR</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">AdvisorShares Dorsey Wright ADR ETF</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">Exchange Traded Fund</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AADR'><br>&nbsp;<b>AdvisorShares Dorsey Wright ADR ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">57.42</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">1.72%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AADR&ty=c&p=d&b=1" class="screener-link">1,537</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">7</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAL'><br>&nbsp;<b>American Airlines Group Inc.</b><br>&nbsp;Airlines | USA | 6.89B] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link-primary">AAL</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">American Airlines Group Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">Industrials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">Airlines</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">6.89B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAL'><br>&nbsp;<b>American Airlines Group Inc.</b><br>&nbsp;Airlines | USA | 6.89B] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">13.54</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-1.38%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAL&ty=c&p=d&b=1" class="screener-link">77,639,160</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">8</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAMC'><br>&nbsp;<b>Altisource Asset Management Corporation</b><br>&nbsp;Asset Management | USA | 23.18M] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link-primary">AAMC</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">Altisource Asset Management Corporation</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">Asset Management</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">23.18M</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAMC'><br>&nbsp;<b>Altisource Asset Management Corporation</b><br>&nbsp;Asset Management | USA | 23.18M] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">14.05</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-1.40%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAMC&ty=c&p=d&b=1" class="screener-link">4,957</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">9</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAME'><br>&nbsp;<b>Atlantic American Corporation</b><br>&nbsp;Insurance - Life | USA | 41.08M] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link-primary">AAME</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">Atlantic American Corporation</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">Insurance - Life</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">41.08M</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAME'><br>&nbsp;<b>Atlantic American Corporation</b><br>&nbsp;Insurance - Life | USA | 41.08M] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">2.00</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">5.26%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAME&ty=c&p=d&b=1" class="screener-link">30,862</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">10</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAN'><br>&nbsp;<b>Aaron's, Inc.</b><br>&nbsp;Rental & Leasing Services | USA | 3.95B] offsetx=[100] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link-primary">AAN</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">Aaron's, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">Industrials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">Rental & Leasing Services</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">3.95B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAN'><br>&nbsp;<b>Aaron's, Inc.</b><br>&nbsp;Rental & Leasing Services | USA | 3.95B] offsetx=[-323] offsety=[0] delay=[0]"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">59.20</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">3.39%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAN&ty=c&p=d&b=1" class="screener-link">1,728,518</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">11</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAOI'><br>&nbsp;<b>Applied Optoelectronics, Inc.</b><br>&nbsp;Semiconductors | USA | 259.17M] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link-primary">AAOI</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">Applied Optoelectronics, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">Technology</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">Semiconductors</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">259.17M</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAOI'><br>&nbsp;<b>Applied Optoelectronics, Inc.</b><br>&nbsp;Semiconductors | USA | 259.17M] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">13.38</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-1.40%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAOI&ty=c&p=d&b=1" class="screener-link">786,476</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">12</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAON'><br>&nbsp;<b>AAON, Inc.</b><br>&nbsp;Building Products & Equipment | USA | 3.01B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link-primary">AAON</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">AAON, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">Industrials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">Building Products & Equipment</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">3.01B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">48.64</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAON'><br>&nbsp;<b>AAON, Inc.</b><br>&nbsp;Building Products & Equipment | USA | 3.01B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">59.59</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-0.72%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAON&ty=c&p=d&b=1" class="screener-link">188,523</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">13</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAP'><br>&nbsp;<b>Advance Auto Parts, Inc.</b><br>&nbsp;Specialty Retail | USA | 10.65B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link-primary">AAP</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">Advance Auto Parts, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">Consumer Cyclical</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">Specialty Retail</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">10.65B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">28.12</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAP'><br>&nbsp;<b>Advance Auto Parts, Inc.</b><br>&nbsp;Specialty Retail | USA | 10.65B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">154.28</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">1.54%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAP&ty=c&p=d&b=1" class="screener-link">682,477</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">14</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAPL'><br>&nbsp;<b>Apple Inc.</b><br>&nbsp;Consumer Electronics | USA | 1981.29B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link-primary">AAPL</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">Apple Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">Technology</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">Consumer Electronics</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">1981.29B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">34.36</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAPL'><br>&nbsp;<b>Apple Inc.</b><br>&nbsp;Consumer Electronics | USA | 1981.29B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">452.04</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">3.32%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAPL&ty=c&p=d&b=1" class="screener-link">41,486,204</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">15</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAT'><br>&nbsp;<b>American Assets Trust, Inc.</b><br>&nbsp;REIT - Diversified | USA | 1.65B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link-primary">AAT</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">American Assets Trust, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">Real Estate</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">REIT - Diversified</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">1.65B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">37.63</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAT'><br>&nbsp;<b>American Assets Trust, Inc.</b><br>&nbsp;REIT - Diversified | USA | 1.65B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">27.66</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-0.65%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAT&ty=c&p=d&b=1" class="screener-link">255,474</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">16</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAU'><br>&nbsp;<b>Almaden Minerals Ltd.</b><br>&nbsp;Gold | Canada | 83.82M] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link-primary">AAU</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">Almaden Minerals Ltd.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">Basic Materials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">Gold</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">Canada</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">83.82M</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAU'><br>&nbsp;<b>Almaden Minerals Ltd.</b><br>&nbsp;Gold | Canada | 83.82M] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">0.68</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link"><span style="color:#aa0000;">-0.28%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAU&ty=c&p=d&b=1" class="screener-link">407,199</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">17</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAWW'><br>&nbsp;<b>Atlas Air Worldwide Holdings, Inc.</b><br>&nbsp;Airports & Air Services | USA | 1.49B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link-primary">AAWW</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">Atlas Air Worldwide Holdings, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">Industrials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">Airports & Air Services</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">1.49B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAWW'><br>&nbsp;<b>Atlas Air Worldwide Holdings, Inc.</b><br>&nbsp;Airports & Air Services | USA | 1.49B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">60.01</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">0.32%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAWW&ty=c&p=d&b=1" class="screener-link">538,374</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">18</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAXJ'><br>&nbsp;<b>iShares MSCI All Country Asia ex Japan ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link-primary">AAXJ</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">iShares MSCI All Country Asia ex Japan ETF</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">Exchange Traded Fund</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAXJ'><br>&nbsp;<b>iShares MSCI All Country Asia ex Japan ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">77.20</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">1.54%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXJ&ty=c&p=d&b=1" class="screener-link">725,903</a></td></tr><tr valign="top" class="table-dark-row-cp"  onmouseover="this.className='table-dark-row-cp-h';" onmouseout="this.className='table-dark-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">19</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAXN'><br>&nbsp;<b>Axon Enterprise, Inc.</b><br>&nbsp;Aerospace & Defense | USA | 5.49B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link-primary">AAXN</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">Axon Enterprise, Inc.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">Industrials</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">Aerospace & Defense</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">5.49B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">-</a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AAXN'><br>&nbsp;<b>Axon Enterprise, Inc.</b><br>&nbsp;Aerospace & Defense | USA | 5.49B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">79.76</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">0.67%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AAXN&ty=c&p=d&b=1" class="screener-link">921,702</a></td></tr><tr valign="top" class="table-light-row-cp"  onmouseover="this.className='table-light-row-cp-h';" onmouseout="this.className='table-light-row-cp';">
-<td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">20</a></td><td height="10" align="left" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AB'><br>&nbsp;<b>AllianceBernstein Holding L.P.</b><br>&nbsp;Asset Management | USA | 2.72B] offsetx=[100] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link-primary">AB</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">AllianceBernstein Holding L.P.</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">Financial</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">Asset Management</a></td><td height="10" align="left" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">USA</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">2.72B</a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">10.81</span></a></td><td height="10" align="right" class="screener-body-table-nw" title="cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/chart.ashx?s=m&ty=c&t=AB'><br>&nbsp;<b>AllianceBernstein Holding L.P.</b><br>&nbsp;Asset Management | USA | 2.72B] offsetx=[-323] offsety=[-220] delay=[0]"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">28.94</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link"><span style="color:#008800;">1.40%</span></a></td><td height="10" align="right" class="screener-body-table-nw"><a href="quote.ashx?t=AB&ty=c&p=d&b=1" class="screener-link">328,488</a></td></tr></table>
-</td>
-</tr>
-<tr>
-<td>
-<table width="100%" cellpadding="0" cellspacing="0" class="body-table" bgcolor="#ffffff" border="0">
-<tr>
-<td align="left" style="color:#888888"></td><td align="right" style="color:#1E6DC0"><a href="elite.ashx" class="tab-link">export</a></td></tr>
-</table>
-</td>
-</tr>
-<tr><td><img src="gfx/nic2x2.gif" width="2" height="8" alt="" border="0"></td></tr>
-<tr>
-<td width="100%" align="center" valign="top" class="body-table screener_pagination" bgcolor="#ffffff">
-<a href="screener.ashx?v=111" class="tab-link" style="color: #000"><b>1</b></a><a href="screener.ashx?v=111&r=21" class="screener-pages">2</a><a href="screener.ashx?v=111&r=41" class="screener-pages">3</a><a href="screener.ashx?v=111&r=61" class="screener-pages">4</a><a href="screener.ashx?v=111&r=81" class="screener-pages">5</a><a href="screener.ashx?v=111&r=101" class="screener-pages">6</a> ... <a href="screener.ashx?v=111&r=981" class="screener-pages">50</a> ... <a href="screener.ashx?v=111&r=1981" class="screener-pages">100</a> ... <a href="screener.ashx?v=111&r=2981" class="screener-pages">150</a> ... <a href="screener.ashx?v=111&r=3981" class="screener-pages">200</a> ... <a href="screener.ashx?v=111&r=4981" class="screener-pages">250</a> ... <a href="screener.ashx?v=111&r=5981" class="screener-pages">300</a> ... <a href="screener.ashx?v=111&r=6981" class="screener-pages">350</a> ... <a href="screener.ashx?v=111&r=7521" class="screener-pages">377</a><a href="screener.ashx?v=111&r=21" class="tab-link"><b>next</b></a>
-</td>
-</tr>
-<tr><td><img src="gfx/nic2x2.gif" width="2" height="10" alt="" border="0"></td></tr>
-</table>
-</div>
-</tr></td><!-- TS
-A|97.63|1318189
-AA|14.96|3987737
-AAAU|19.03|587641
-AACG|1.10|50561
-AACQU|10.15|411883
-AADR|57.42|1537
-AAL|13.54|77639160
-AAMC|14.05|4957
-AAME|2.00|30862
-AAN|59.20|1728518
-AAOI|13.38|786476
-AAON|59.59|188523
-AAP|154.28|682477
-AAPL|452.04|41486204
-AAT|27.66|255474
-AAU|0.68|407199
-AAWW|60.01|538374
-AAXJ|77.20|725903
-AAXN|79.76|921702
-AB|28.94|328488
-TE -->
-</table>
-
-            <script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                ga('create', 'UA-3261808-1', 'auto', { sampleRate: 10 });
-                ga('set', 'dimension1', 'NotLoggedIn');
-                
-                ga('set', 'dimension3', window.devicePixelRatio || 'unknown');
-                ga('send', 'pageview');
-            </script>
-        <script type="text/javascript">
-_qoptions={qacct:"p-c2W8esUZ6Q8oA"};
+<head prefix="og:http://ogp.me/ns#">
+<title>AdaptHealth Corp. (AHCO) Earnings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<base href="https://www.streetinsider.com/" />
+<meta name="keywords" value="AdaptHealth Corp. (AHCO) Earnings, earnings news, earnings dates, earnings calendar, earnings conference call information, earnings growth, earnings history">
+<meta name="description" value="AdaptHealth Corp. (AHCO) Earnings, earnings news, earnings dates, earnings calendar, earnings conference call information, earnings growth, earnings history">
+
+<meta property="og:image" content="http://www.streetinsider.com/images/silogo-new.png" />
+<meta property="og:site_name" content="StreetInsider.com" />
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+
+<meta name="google-play-app" content="app-id=com.streetinsider.siandroid">
+
+<!-- jquery setup -->
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$jq = jQuery.noConflict();
+window.suggestmeyes_loaded = true;
 </script>
-<script type="text/javascript" src="https://secure.quantserve.com/quant.js"></script>
+
+<script type="text/javascript" src="/js/jqui-1.11.4/jquery-ui.min.js"></script>
+<link href="/js/jqui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+<!-- / jquery setup -->
+
+<script type="text/javascript" src="/js/stock_tooltips.js?v=4"></script>
+
+<script language="javascript" type="text/javascript" src="/js/formcheck.js"></script>
+<script language="javascript" type="text/javascript" src="/js/root.js?rev=14"></script>
+<link href="/css/root.css?rev=27" rel="stylesheet" type="text/css" title="mainstyles" />
+
+<!-- Mimic Internet Explorer 7 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!--[if IE 6]><link href="https://www.streetinsider.com/css/ie6.css.php?rev=6" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 7]><link href="https://www.streetinsider.com/css/ie7.css.php?rev=7" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 8]><link href="https://www.streetinsider.com/css/ie8.css?rev=8" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 9]><link href="https://www.streetinsider.com/css/ie9.css?rev=8" rel="stylesheet" type="text/css" /><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="StreetInsider.com - Special Reports  [RSS]" href="http://www.streetinsider.com/freefeed.php" />
+<meta name="verify-v1" content="iNCuwiiWAOHHoyxkl9ZUsz4BKM/OWGiuEvgHJlVBg6M=" />
+<script type="text/javascript">
+var baseTag = 'EcEarnings;';
+var kvals = 'kval=EcEarnings;';
+</script>
+
+
+<!--
+<script src="https://cdn.investingchannel.com/roadblock/full_page_ad.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var siteInfo = new Array(12, 'www.streetinsider.com', 'ic_landing.html');
+IC.LoadView(siteInfo);
+</script>
+-->
+
+<script>InvestingChannelQueue = window.InvestingChannelQueue || [];</script>
+<script async src="https://u5.investingchannel.com/static/uat.js"></script>
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function(event) {
+	var icDivs = document.querySelectorAll('.ic-ad-div');
+	var icInfos = [];
+	for ( var i = 0; i < icDivs.length; i++ ) {
+		icInfos.push({
+			id: icDivs[i].getAttribute('id'),
+			tag: icDivs[i].getAttribute('data-tag'),
+			size: icDivs[i].getAttribute('data-size'),
+			kv: icDivs[i].getAttribute('data-kv')
+		});
+	}
+
+	var page;
+	InvestingChannelQueue.push(function() {
+		page = InvestingChannel.UAT.Run("af59d0ef-8ca4-4695-8d5b-818c2270d9ae");
+	});
+
+	InvestingChannelQueue.push(function() {
+		var t, kv, kval;
+		for ( var i = 0; i < icInfos.length; i++ ) {
+			t = page.defineTag(icInfos[i].tag, icInfos[i].size, icInfos[i].id);
+			if ( icInfos[i].kv.length > 0 ) {
+				kv = icInfos[i].kv.split('=');
+				kval = {};
+				kval[kv[0]] = kv[1];
+				t.setKval(kval);
+			}
+		}
+
+		if ( document.getElementById('IC_OOP_1') ) {
+			page.defineOutOfPageTag('streetinsider/home', 'IC_OOP_1');
+		}
+	});
+
+	InvestingChannelQueue.push(function() {
+		page.renderTags();
+	});
+});
+</script>
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-101908-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="//f7d6b292016944ef9cdb53be27261601.js.ubembed.com" async></script><script type="text/javascript" src="/dstlstrtinsxhr.js" defer></script><style type="text/css">#d__fFH{position:absolute;top:-5000px;left:-5000px}#d__fF{font-family:serif;font-size:200px;visibility:hidden}#tyzyeesrbzuvwzbytrravcqfust{display:none!important}</style></head>
+<body onLoad="focusLoginField();">
+
+<div id="IC_OOP_1"></div>
+
+<div id="fb-root"></div>
+<script type="text/javascript">
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '415409898518774', // App ID
+		channelUrl : '//www.streetinsider.com/fbchannel.php', // Channel File
+		status     : true, // check login status
+		cookie     : true, // enable cookies to allow the server to access the session
+		xfbml      : true,  // parse XFBML
+		oauth      : true,
+		version    : 'v2.5'
+	});
+
+	// Additional initialization code here
+	FB.Event.subscribe('auth.statusChange', function(response) {
+		if ( response.status == 'connected' ) {
+			if ( window.fbLoginCallback ) {
+				window.fbLoginCallback.call(window, response);
+			}
+		}
+	});
+
+	FB.Event.subscribe('edge.create', function(e) {
+		if ( window.onFbLike ) {
+			window.onFbLike();
+		}
+	});
+};
+
+// Load the SDK Asynchronously
+(function(d){
+var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement('script'); js.id = id; js.async = true;
+js.src = "//connect.facebook.net/en_US/all.js";
+ref.parentNode.insertBefore(js, ref);
+}(document));
+</script>
+
+
+
+<div id="container">
+
+
+
+<img id="container_top" src="/images/body_top.png" alt="" width="1000" height="3" />
+<div id="white">
+
+<div id="header">
+<div id="top_left">
+<a id="logo" href="/"><img src="/images/silogo-new.png" alt="StreetInsider.com" width="232" height="79" /></a>
+</div>
+
+<div id="top_right" style="width:726px;">
+
+<div id="sigoogle">
+<form method="GET" action="stock_lookup.php">
+<input type="hidden" name="LookUp" value="Get Quote" /> <!-- may be needed? -->
+<input class="has_placeholder" id="lookup_quote" name="q" type="text" size="12" value="TICKER/NAME" style="padding: 2px; border:1px solid #7e9db9" /> 
+<input class="go go_white" type="submit" value="Go" />
+</form>
+
+<script type="text/javascript">
+$jq(function() {
+	var $el = $jq('#lookup_quote');
+	$el.autocomplete({
+		source: function(req, res) {
+			var url = 'mobileapi.php?action=quoteSearch&search=' + req.term;
+			$jq.ajax(url, { dataType: 'json' })
+				.done(function(json) {
+					var newjson = [];
+					for ( var i = 0; i < json.length; i++ ) {
+						newjson.push({
+							label: json[i].name + ' (' + json[i].symbol + ')',
+							sym: json[i].symbol
+						});
+					}
+					res(newjson);
+				})
+				.fail(function() {
+					res({});
+				});
+		},
+		minLength: 1,
+		select: function(event, ui) {
+			event.preventDefault();
+			$jq(this).val(ui.item.sym);
+			$jq(this).closest('form').submit();
+		}
+	});
+});
+</script>
+
+<!-- Google CSE Search Box Begins -->
+
+<form id="searchbox" action="searchresults.php">
+<input id="google_search_header" class="has_placeholder" accesskey="s" name="gq" type="text" size="17" value="SEARCH SITE" />
+<input class="go go_white" type="submit" alt="Go" align="top" name="LookUp" value="Go" />
+</form>
+
+
+<!-- Google CSE Search Box Ends -->
+</div>
+
+<script type="text/javascript">
+registerDefaultInput('lookup_quote');
+registerDefaultInput('google_search_header');
+</script>
+
+<ul id="top_acct_nav">
+		<li><a href="/login.php">Log-In</a></li>
+		<li>|</li>
+	<li><a href="/account_home.php">Home</a></li>
+	<li>|</li>
+	<li><a href="/account_emailalerts.php">E-mail Alerts</a></li>
+	<li>|</li>
+	<li><a onclick="NewWindow(this.href, 'all_headlines', 750, 500, 'yes');return false;" href="http://www.streetinsider.com/headline_scroll.php?type=all">My Headlines</a>
+	<li>|</li>
+	<li><a href="/account_portfolio.php">Portfolio</a></li>
+</ul>
+
+<br clear="both" />
+
+<div id="top_text_ad">
+<a href="https://try.streetinsider.com/task-check/"><b>Upgrade to StreetInsider Premium! - Free Trial</b></a></div>
+
+</div>
+
+
+<br clear="both" />
+
+
+<div style="text-align:center; width:100%; height:auto" class="ad">
+<div class="ic-ad-div" id="IC_728x90_19" data-tag="streetinsider/equities" data-size="728x90" data-kv=""></div></div>
+
+</div> <!-- end #header -->
+
+
+<div id="nav"> 
+
+<div class="mini_ad">
+</div>
+
+
+<ul class='loggedout'>
+
+	<li class="main_li show-home"><a class="" href="/index.php">Home</a></li>
+
+	<!-- for narrow screens -->
+	<li class="main_li show-sm" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="#">Menu</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+								<li class="MarginBottomNeg15 sub_li"><a href="https://try.streetinsider.com/task-check/">JOIN</a></li>
+								<li class="MarginBottomNeg15 sub_li premiumtab"><a href="http://www.streetinsider.com/premium_content.php">SI Premium</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="http://www.streetinsider.com/portal/Ratings+Insider/4.html">Ratings</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="http://www.streetinsider.com/portal/M+and+A+Insider/1.html">Mergers</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="http://www.streetinsider.com/portal/Earnings+Insider/5.html">Earnings</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="http://www.streetinsider.com/portal/Dividend+Insider/8.html">Dividends</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="http://www.streetinsider.com/portal/IPO+Insider/2.html">IPOs</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="http://www.streetinsider.com/portal/Hedge+Fund+Insider/6.html">Hedge Funds</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href=" http://www.streetinsider.com/premium_newsletters.php">Premium Letters</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="https://sinewswire.streetinsider.com/">Submit Press Release</a></li>
+								<li class="MarginBottomNeg15 sub_li"><a href="https://www.streetinsider.com/tips.php">Tips</a></li>
+				</ul>
+	</li>
+
+				<li class="main_li hide-sm"><a class="" href="https://try.streetinsider.com/task-check/">JOIN</a></li>
+					<li class="main_li hide-sm premiumtab" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/premium_content.php">SI Premium</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/premium_content_fullfeed.php">Full Feed View</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/headline_scroll.php?type=si">Headline View</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/squawk_popup.php">SI Premium Squawk Box</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/account_emailalerts.php">Alerts</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="https://www.streetinsider.com/headline_manage.php">Custom Headlines </a></li>
+									<li class="MarginBottomNeg15 sub_li premiumtab"><a class="" href="https://try.streetinsider.com/task-check/">Try SI PREMIUM</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="https://www.streetinsider.com/account_subscription.php">Upgrade Your Current Account</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/signup_content.php">License</a></li>
+					</ul>
+	</li>
+					<li class="main_li" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="">Calendars</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="https://www.streetinsider.com/presentation_cal.php">Co. NDR/Event Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/dividend_cal.php">Dividend Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ec_calendar.php">Earnings Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/events.php">Event Driven</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/fda.php">FDA Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/conferences.php">Investor Conferences</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ipo_history.php?type=upcoming">IPO Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ma_merger_arbitrage.php">Merger Arb</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/rating_cal.php">Ratings Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/stocksplits_cal.php">Stock Split Calendar </a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/portal/Ratings+Insider/4.html">Ratings</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Analyst+Comments">Analyst Comments</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Comments">Hot Analyst Comments</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Analyst+EPS+Change">Analyst EPS Change</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Analyst+EPS+View">Analyst EPS View</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Analyst+PT+Change">Analyst PT Change</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Credit+Ratings">Credit Ratings</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Downgrades">Downgrade News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Downgrades">Hot Downgrades</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/New+Coverage">New Coverage News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+New+Coverage">Hot New Coverage</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Upgrades">Upgrade News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Upgrades">Hot Upgrades</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/portal/Ratings+Insider/4.html">More...</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/portal/M+and+A+Insider/1.html">Mergers</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Mergers+and+Acquisitions">Merger News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+M+and+A">Hot M&A News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Private+Equity">Private Equity</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Rumors">Rumors</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Spinoffs">Spinoffs</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ma_merger_arbitrage.php">Merger Arbitrage</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/events.php">Event Driven</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ma_top_deals.php">2020 Top M&A Deals</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/portal.php?id=1&full=middle_center">Top 50 Takeover Targets</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/portal/M+and+A+Insider/1.html">More...</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm on" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/portal/Earnings+Insider/5.html">Earnings</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ec_calendar.php">Earnings Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Earnings">Earnings News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Earnings">Hot Earnings</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Guidance">Guidance</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Guidance">Hot Guidance</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Conference+Calls">Conference Calls</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ec_earnings.php?q=">Earnings History Search</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="on" href="http://www.streetinsider.com/portal/Earnings+Insider/5.html">More...</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/portal/Dividend+Insider/8.html">Dividends</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/dividend_cal.php">Dividend Calendar</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Dividends">Dividend News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Dividends">Hot Dividends</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Dividend+Hike">Dividend Hike</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Special+Dividends">Special Dividends</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Stock+Buybacks">Stock Buybacks</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Buybacks">Hot Stock Buybacks</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Stock+Splits">Stock Splits</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/portal/Dividend+Insider/8.html">More...</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/portal/IPO+Insider/2.html">IPOs</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/IPOs">IPO News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+IPOs">Hot IPOs</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Equity+Offerings">Equity Offerings</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ipo_history.php?type=priced">Recent IPOs</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/ipo_history.php?type=upcoming">Upcoming IPOs</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/top_ipos.php">2020 Top IPOs</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/portal/IPO+Insider/2.html">More...</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href="http://www.streetinsider.com/portal/Hedge+Fund+Insider/6.html">Hedge Funds</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/13Ds">13D</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/13Fs">13F</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/13Gs">13G</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hedge+Funds">Hedge Funds News</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Hot+Hedge+Fund+News">Hot Insider Trades</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Insider+Trades">Insider Trades</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/portal/Hedge+Fund+Insider/6.html">More...</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm nav_pnl" onmouseover="SIJS.toggleMenu(this, true);" onmouseout="SIJS.toggleMenu(this, false);">
+		<a href=" http://www.streetinsider.com/premium_newsletters.php">Premium Letters</a>
+		<ul class="nav_submenu" style="white-space:nowrap">
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Newsletter/Streetinsider.com+Pulse+Picks/2.html">Pulse Picks</a></li>
+									<li class="MarginBottomNeg15 sub_li"><a class="" href="http://www.streetinsider.com/Newsletter/StreetInsider.com+Stealth+Growth+Insider/3.html">Stealth Growth Insider</a></li>
+					</ul>
+	</li>
+					<li class="main_li hide-sm"><a class="" href="https://sinewswire.streetinsider.com/">Submit Press Release</a></li>
+					<li class="main_li hide-sm"><a class="" href="https://www.streetinsider.com/tips.php">Tips</a></li>
+	
+</ul>
+
+<!-- END Header -->
+</div>
+
+
+<div id="quick_links">
+<ul>
+<li class="quick_links_title">QUICK LINKS :</li>
+<li class="quick_links_first"><a href="http://www.streetinsider.com/entities/Goldman+Sachs+Conviction+Buy+List">Goldman Sachs Conviction Buy List</a></li>
+<li><a href="http://www.streetinsider.com/entities/Warren+Buffett">Warren Buffett News</a></li>
+<li><a href="https://www.streetinsider.com/entities/Elliott+Associates">Elliott Associates News</a></li>
+<li style="padding-left: 6px;">
+	<a href="https://twitter.com/Street_Insider" data-width="241" class="twitter-follow-button">Follow @Street_Insider</a>
+	<script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+</li>
+<li style="padding-left: 6px;">
+	<div class="fb-like" data-href="https://www.facebook.com/streetinsiderdotcom" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<style type="text/css">
+.earning_history {
+width: 650px;
+border-spacing: 0px;
+}
+.earning_history th {
+border-bottom: 1px solid #A0C0F0;
+color: #003060;
+text-align: left;
+padding: 4px;
+font-size: 11px;
+}
+.earning_history td {
+padding: 4px;
+text-align: left;
+font-size: 11px;
+}
+.earning_history td.surprise_red, span.surprise_red {
+color: #C00000;
+}
+.earning_history td.surprise_green, span.surprise_green {
+color: #00A000;
+}
+
+.earning_history td.nowrap {
+	white-space: nowrap;
+}
+
+.earning_history tr.is_future {
+background-color: #FFD89C;
+}
+
+.earning_history tr.is_hilite {
+	font-weight: bold;
+}
+
+div.earnings_form {
+	margin-bottom: 8px;
+}
+div.earnings_form form {
+	display: inline;
+}
+
+h3 {
+	margin-bottom: 5px;
+}
+
+table.info-table {
+	margin-top: 12px;
+	width: 620px;
+}
+
+table.info-table td, table.info-table th {
+	padding: 4px;
+}
+table.info-table th {
+	text-align: right;
+}
+div.d-others {
+	font-weight: bold;
+}
+
+div.middleads div {
+	display: inline-block;
+}
+
+</style>
+
+<div id="content" style="float:none; width:984px; margin-bottom: 30px;">
+
+<!-- right sidebar -->
+<div style="float:right; width: 310px;">
+<div style="margin-bottom:10px;">
+<div class="ic-ad-div" id="IC_300x250_125" data-tag="streetinsider/equities" data-size="300x250,300x600" data-kv=""></div></div>
+
+<div style="margin-bottom: 10px;">
+	<h3>AHCO Financial Facts</h3>
+		<strong><a href="stock_lookup.php?q=ahco&amp;financials=income">See Full Income Statement</a></strong>
+	<br /><br />
+
+		<strong><a href="stock_lookup.php?q=ahco&amp;financials=balance">See Full Balance Sheet</a></strong>
+</div>
+
+<div>
+<div class="ic-ad-div" id="IC_300x250_125_1" data-tag="streetinsider/equities" data-size="300x250,300x600" data-kv=""></div></div>
+
+</div>
+<!-- end right sidebar -->
+
+<h1 style="margin-top:3px;">AdaptHealth Corp. (AHCO) Earnings</h1>
+
+<div class="earnings_form">
+
+
+<form action="ec_earnings.php" method="get"> 
+<label>Ticker: </label> 
+<input class="text" type="text" name="q" size="7" /> 
+<input class="button" type="submit" value="Search" /> 
+</form>
+
+&nbsp; | &nbsp;
+<a href="stock_lookup.php?q=AHCO">Expand Research on AHCO</a>
+
+<table cellspacing="0" class="info-table">
+<tr>
+	<th width="40%">Next EPS Date</th>
+		<td>11/4/20 *Est.</td>
+		<th>EPS Growth Rate</th>
+	<td>N/A</td>
+</tr>
+<tr>
+	<th>Average EPS % Beat Rate</th>
+	<td><span style="color:red">-106.1%</span></td>
+	<th>Revenue Growth Rate</th>
+	<td>N/A</td>
+</tr>
+<tr>
+	<th>Average % Move 1-Wk after EPS</th>
+	<td><span style="color:green">+6.8%</span></td>
+	<th>Normal Earnings Time</th>
+	<td>Before Open</td>
+</tr>
+</table>
+
+
+</div>
+
+<table class="earning_history" cellspacing="0">
+<tr>
+<th><a href="ec_earnings.php?sort=earning_date&amp;q=ahco" title="Sort by Date">Date</a></th><th>&nbsp;</th>
+		<th><a href="ec_earnings.php?sort=qtr&amp;q=ahco" title="Sort by Qtr">Qtr</a></th>
+		<th><a href="ec_earnings.php?sort=reported&amp;q=ahco" title="Sort by EPS">EPS</a></th>
+		<th><a href="ec_earnings.php?sort=estimated&amp;q=ahco" title="Sort by Cons.">Cons.</a></th>
+		<th><a href="ec_earnings.php?sort=surprise&amp;q=ahco" title="Sort by Surprise">Surprise</a></th>
+<th><a href="ec_earnings.php?sort=revenue&amp;q=ahco" title="Sort by Revenue">Revs</a></th>
+		<th><a href="ec_earnings.php?sort=revenue_estimate&amp;q=ahco" title="Sort by Estimated Revenue">Cons.</a></th>
+		<th title="Guidance">Gd.</th>
+<th><a href="ec_earnings.php?sort=onewk_perf&amp;q=ahco" title="Sort by Performance for Week">1-Week %</a></th>
+<th><a href="ec_earnings.php?sort=oneday_perf&amp;q=ahco" title="Sort by Performance for Day">1-Day %</a></th>
+<th>Details</th>
+	</tr>
+<tr class="LiteHover">
+<td>8/4/20 </td>
+<td><a href="http://www.streetinsider.com/Press+Releases/AdaptHealth+Corp.+Schedules+Second+Quarter+2020+Financial+Results+and+Conference+Call/17173413.html"><img src="images/icons/telephone.png" title="Conference Call" /></a></td>
+
+		<td>Q220</td>
+		<td class="nowrap">$0.08</td><td>$0.19</td>
+<td><span class="surprise_red">-$0.11</span></td><td>$232.1M</td><td>$196.28M</td>
+<td><a href="ec_guidance.php?q=AHCO&amp;qtr=2&amp;year=2020"><strong style="color:#0000FF; font-size: 14px;">=</strong></a></td>
+<td><a href="login.php" class="PremiumTip"><img src="images/number_blur.png" /></a></td><td><a href="login.php" class="PremiumTip"><img src="images/number_blur.png" /></a></td><td><a href="http://www.streetinsider.com/news.php?id=17190400">Details</a></td>
+</tr>
+<tr class="LiteHover">
+<td>5/5/20 </td>
+<td><a href="http://www.streetinsider.com/Press+Releases/AdaptHealth+Corp.+Schedules+First+Quarter+2020+Financial+Results+and+Conference+Call/16806575.html"><img src="images/icons/telephone.png" title="Conference Call" /></a></td>
+
+		<td>Q120</td>
+		<td class="nowrap">$0.00</td><td>$0.12</td>
+<td><span class="surprise_red">-$0.12</span></td><td>$191.44M</td><td>$177.4M</td>
+<td><a href="ec_guidance.php?q=AHCO&amp;qtr=1&amp;year=2020"><strong style="color:#0000FF; font-size: 14px;">=</strong></a></td>
+<td><a href="login.php" class="PremiumTip"><img src="images/number_blur.png" /></a></td><td><a href="login.php" class="PremiumTip"><img src="images/number_blur.png" /></a></td><td><a href="http://www.streetinsider.com/news.php?id=16832006">Details</a></td>
+</tr>
+<tr class="LiteHover">
+<td>2/25/20 </td>
+<td><a href="http://www.streetinsider.com/Press+Releases/AdaptHealth+Corp.+Schedules+2019+Fourth+Quarter+and+Full+Year+Financial+Results+and+Conference+Call/16508705.html"><img src="images/icons/telephone.png" title="Conference Call" /></a></td>
+
+		<td>Q419</td>
+		<td class="nowrap">-$0.10</td><td>$0.06</td>
+<td><span class="surprise_red">-$0.16</span></td><td>$149.5M</td><td>$142.26M</td>
+<td><a href="ec_guidance.php?q=AHCO&amp;qtr=4&amp;year=2019"><strong style="color:#0000FF; font-size: 14px;">=</strong></a></td>
+<td><a href="login.php" class="PremiumTip"><img src="images/number_blur.png" /></a></td><td><a href="login.php" class="PremiumTip"><img src="images/number_blur.png" /></a></td><td><a href="http://www.streetinsider.com/news.php?id=16518196">Details</a></td>
+</tr>
+</table>
+<div style="clear:left"></div><div style="width: 600px; float: left; margin: 10px 0"><div class="d-others">Like AdaptHealth Corp. (AHCO) Earnings? Also look at <a href="ec_earnings.php?q=MCK">MCK</a>, <a href="ec_earnings.php?q=MD">MD</a></div>
+
+	  <div id="news_extra_tabs">
+	    <div id="right_tabs" class="eg-tabs" style="width:650px;">
+	      <a id="tab_all" class="on" href="#" onclick="changeEarningsPod(this); return false;"><span>All Earnings Related News</span></a>
+		  <a id="tab_eg" href="#" onclick="changeEarningsPod(this); return false;"><span>Earnings News Only</span></a>
+		</div><ul id="content_all">
+<li style="border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 5px; "><a href="news.php?id=17190400">AdaptHealth Corp. (AHCO) Misses Q2 EPS by 11c, Revenues Beat; Raises FY20 Net Revenue Guidance Above Consensus</a><br /><span style="color:#888">August 4, 2020 6:15 AM</span></li>
+<li style="border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 5px; "><a href="news.php?id=16832006">AdaptHealth Corp. (AHCO) Misses Q1 EPS by 12c, Revenue Beats, Offers Guidance</a><br /><span style="color:#888">May 5, 2020 6:42 AM</span></li>
+<li style="border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 5px; "><a href="news.php?id=16518196">AdaptHealth Corp. (AHCO) Misses Q4 EPS by 16c, Revenues Beat; Raises FY20 Oultook</a><br /><span style="color:#888">February 25, 2020 6:11 AM</span></li>
+<li style="margin-top: 5px;"><strong><a href="stock_lookup_news.php?q=AHCO&amp;type=epsrelated">See More</a></strong></li>
+</ul>
+<ul id="content_eg" style="display:none">
+<li style="border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 5px; "><a href="news.php?id=17190400">AdaptHealth Corp. (AHCO) Misses Q2 EPS by 11c, Revenues Beat; Raises FY20 Net Revenue Guidance Above Consensus</a><br /><span style="color:#888">August 4, 2020 6:15 AM</span></li>
+<li style="border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 5px; "><a href="news.php?id=16832006">AdaptHealth Corp. (AHCO) Misses Q1 EPS by 12c, Revenue Beats, Offers Guidance</a><br /><span style="color:#888">May 5, 2020 6:42 AM</span></li>
+<li style="border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 5px; "><a href="news.php?id=16518196">AdaptHealth Corp. (AHCO) Misses Q4 EPS by 16c, Revenues Beat; Raises FY20 Oultook</a><br /><span style="color:#888">February 25, 2020 6:11 AM</span></li>
+<li style="margin-top: 5px;"><strong><a href="stock_lookup_news.php?q=AHCO&amp;type=eg">See More</a></strong></li>
+</ul>
+</div></div>
+</div>
+
+<script type="text/javascript">
+var showMore = function()
+{
+	var hist = $jq('#history_extra');
+	if ( hist.css('display') == 'none' ) {
+		hist.show();
+		$jq('#expandbtn').val('Collapse Table');
+	} else {
+		hist.hide();
+		$jq('#expandbtn').val('Expand Table');
+	}
+	return false;
+};
+</script>
+
+<!--START Ad Space -->
+<div id="ad_space">
+<img src="/images/ad_sipremium.gif" alt="" width="240" height="90" onClick="location.href = '/premium_content.php'; return false" />
+<div class="ad">
+<div class="ic-ad-div" id="IC_728x90_20" data-tag="streetinsider/equities" data-size="728x90" data-kv="zhpos=728"></div></div>
+</div>
+
+<!--END Ad Space -->
+
+<div id="footer">
+<div class="quote">
+<!-- START Cart Bar -->
+<div class="login">
+
+<!--&nbsp;-->
+</div>
+</form>
+<br />
+<div class="rss" onClick="location.href = '/freefeed.php'; return false"><div>&nbsp;</div><h5>Free News Feed</h5>Get our RSS Feed!</div>
+</div>
+
+<div class="copy">
+&copy; Copyright 2020 StreetInsider.com
+</div>
+
+<div class="links" style="padding-top:5px;">
+<dl>
+<dt><a href="/index.php">Home</a></dt>
+<dt><a href="/login.php?members=true">Member's Home</a></dt>
+<dt><a href="/premium_content.php">Premium Content</a></dt>
+</dl>
+<dl>
+<dt><a href="/links.php">Links</a></dt>
+<dt><a href="/entities.php">Entities</a></dt>
+<dt><a href="/about.php">About StreetInsider</a></dt>
+<dt><a href="/signup_content.php">Get Our Content</a></dt>
+</dl>
+<dl>
+<dt><a href="/signup_advertise.php">Advertise with Us</a></dt>
+<dt><a href="/contact.php">Contact Us</a></dt>
+<dt><a href="/disclaimer.php">Disclaimer</a></dt>
+<dt><a href="/privacy.php">Privacy Policy</a></dt>
+</dl>
+<dl>
+<dt><a href="/donotsell.php">Do Not Sell My Personal Information</a></dt>
+</dl>
+</div>
+
+
+</div>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="//edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-10HO819ww3FLg";quantserve();</script>
 <noscript>
-<img src="https://pixel.quantserve.com/pixel/p-c2W8esUZ6Q8oA.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
-</noscript>
-
-            <script type="text/javascript">
-                (function() {
-                    var bannerScript = document.createElement('script');
-
-                    if (document.body.clientWidth >= 1260) {
-                        bannerScript.onload = function () {
-                            var microbarScript = document.createElement('script');
-                            microbarScript.src = '//ads.investingchannel.com/adtags/finviz/qtsearch/88x31.js?kval=qtsearch';
-                            var microbar = document.getElementById('microbar_position');
-                            microbar.appendChild(microbarScript);
-                            microbar.style.marginLeft = '6px';
-                        };
-                    }
-            bannerScript.onerror = function() {
-                var banners = ['2', '4', '5', '6', '7'];
-                var banner = banners[Math.floor(Math.random() * banners.length)];
-
-                if (typeof intICJsTile === 'undefined') {
-                    if (banner === '3') {
-                        document.getElementById('banner_position').innerHTML = '<iframe src="/img/a/' + banner + '/index.html?rev=2" frameBorder="0" width="728" height="90"></iframe>';
-                    } else {
-                        document.getElementById('banner_position').innerHTML = '<a href="/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign=' + banner + '"><img src="/img/a/' + banner + '.jpg"></a>';
-                    }
-                    ga && ga('send', 'event', 'banner', 'impression', banner, {'nonInteraction': 1});
-                }
-            };
-        
-                    bannerScript.src = '//ads.investingchannel.com/adtags/finviz/screener/728x90.js';
-                            
-                    var banner = document.getElementById('banner_position');
-                    banner.appendChild(bannerScript);
-                })();
-            </script>
-        <div id="modal-elite-ad" class="modal-elite-ad">
-                            <div id="modal-elite-ad_content" class="modal-elite-ad_content">
-			                    <button id="modal-elite-ad-close" type="button" class="modal-elite-ad_close">×</button>
-                                
-                                <!--<div id="modal-elite-ad-content-0" style="display: none">
-			                        <h2>Ever heard of Finviz*Elite?</h2>
-                                    <p>
-                                        Our premium service offers you real-time quotes, advanced visualizations, technical studies, and much more.<br>
-                                        Become Elite and make informed financial decisions.
-                                    </p>
-                                    <a href="/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign=modal-0" id="modal-elite-ad-btn-0" class="" target="_blank">Find out more</a>
-                                </div>-->
-
-                                <div id="modal-elite-ad-content-1" style="display: block">
-			                        <h2>Upgrade your FINVIZ experience</h2>
-                                    <p>
-                                        Join thousands of traders who make more informed decisions with&nbsp;our&nbsp;premium features.
-                                        Real-time quotes, advanced&nbsp;visualizations, backtesting, and much more.
-                                    </p>
-                                    <a href="/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign=modal-1" id="modal-elite-ad-btn-1" class="modal-elite_button" target="_blank">Learn more about FINVIZ*Elite</a>
-                                </div>
-                            </div>
-                         </div><script src="/js/pv.js?rev=210" async></script><script src="/script/libs/bowser.min.js?rev=210" type="text/javascript"></script></body>
+<img src="//pixel.quantserve.com/pixel/p-10HO819ww3FLg.gif" style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+<!-- End Quantcast tag -->
+
+
+</div>
+<img id="container_btm" src="/images/body_btm.png" alt="" width="1000" height="3" />
+</div>
+
+
+<script type="text/javascript">
+document.write('<img width="0" height="0" src="/t.p' + 'hp?self=%2Fec_earnings.php&qs=q%3Dahco" />');
+</script>
+
+
+
+
+
+</body>
 </html>
