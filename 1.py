@@ -27,4 +27,5 @@ for tr in tables_row:
         res1.append(row)
 
 df = pd.DataFrame(res, columns=res1)
+df.to_excel('1.xlsx')
 print(df)
