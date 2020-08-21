@@ -1,3 +1,4 @@
+
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 from os.path import exists
@@ -8,8 +9,10 @@ from requests import get as rget
 import time
 from progress.bar import IncrementalBar
 import tqdm
+import json
 
-
+url = 'https://www.streetinsider.com/ec_earnings.php?q=adi'
+url = 'https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=IMBI&apikey=UQGWFV8GJ5UKWK2T'
 #import Earning_TradingView 
 hdr = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
@@ -17,7 +20,7 @@ hdr = {
 # def soup():
 #     soup = bs(responce, features="lxml")
 #     return soup
-    
+#responce = rget(url, headers=hdr)
 def convert_html(url):
     responce = rget(url, headers=hdr).text
     soup = bs(responce, features="lxml") 
@@ -32,4 +35,11 @@ def getTitle(url):
         return "Http Error or Access denite"
     except ur.URLError:
         return "Bad Link"
-
+#print(responce.text)
+a = convert_html(url).get_text()
+d = json.loads(a)
+df = pd.DataFrame.from_dict(d, orient = 'split')
+print(df)
+#a = convert_html(url).text
+#df=pd.DataFrame(responce.json())
+#print(df)

@@ -1,31 +1,41 @@
-from bs4 import BeautifulSoup
-import prettify
-import pandas as pd
-with open('AdaptHealth Corp. (AHCO) Earnings.html', 'r') as file:
-    soup = BeautifulSoup(file.read(), features="lxml")
-    mydivs = soup.find("table", {"class": "earning_history"})
-    tables_row = mydivs.find_all('tr')
-res = []
-res1 = []
-for tr in tables_row:
-    td = tr.find_all('td')
-    row = [tr.text for tr in td if tr.text]
-    if row:
-        res.append(row)
-for tr in tables_row:
-    th = tr.find_all('th')
-    row = []
-    a = 0
-    for tr in th:
-        if a == 1 or a == 9 or a == 10:
-            a += 1
-            continue
-        #if tr.text:
-        row.append(tr.text)
-        a += 1
-    if row:
-        res1.append(row)
 
-df = pd.DataFrame(res, columns=res1)
-df.to_excel('1.xlsx')
-print(df)
+import yahoofinancials as yf
+import requests as rq
+from pprint import pprint
+from bs4 import BeautifulSoup as bs
+import pandas as pd
+import requests
+from tabulate import tabulate
+url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary"
+import csv
+querystring = {"region":"US","symbol":"GOOG"}
+
+headers = {
+    'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com",
+    'x-rapidapi-key': "41e8c2f57fmsh5f8f653c42e7215p101b0cjsn77a87c79d165"
+    }
+hdr = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
+}
+#response = requests.request("GET", url, headers=headers, params=querystring)
+
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+print(type(response))
+#print(response.json())
+#response = response.json()
+#a =dict(a)
+
+#pprint(response.text)
+#soup  = bs(response, features = 'lxml' ).encode('utf-8')
+#print(type(soup))
+#with open('data.csv','wb') as f:
+#    csv.writer(f).writerows((k,)+v for k, v in response.iter)
+# df = pd.DataFrame.from_dict(a)
+# print(df)
+# df.to_csv('324.csv')
+#print(tabulate(response, headers= 'keys'))
+df = pd.DataFrame(response.json())
+df.to_json('23.json')
+#df.to_csv('21.csv')
+#print(df)
