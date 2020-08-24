@@ -9,7 +9,7 @@ from tabulate import tabulate
 url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary"
 import csv
 querystring = {"region":"US","symbol":"GOOG"}
-
+fg
 headers = {
     'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com",
     'x-rapidapi-key': "41e8c2f57fmsh5f8f653c42e7215p101b0cjsn77a87c79d165"
