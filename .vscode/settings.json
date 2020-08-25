@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "C:\\Python38\\python.exe",
     "sqltools.connections": [
         {
@@ -15,4 +16,6 @@
             "username": "root"
         }
     ]
+=======
+>>>>>>> 0e6919e77be076aef159762af5a833e3ab3efb6b
 }
