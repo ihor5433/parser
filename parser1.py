@@ -1,24 +1,12 @@
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
-
-def parse_table(table):#Функция разбора таблицы с вопросом
-    res = pd.DataFrame()
-    return(res)
-
-bank_id = 1771062 #ID банка на сайте banki.ru
-page=1
-max_page=10
-headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:45.0) Gecko/20100101 Firefox/45.0'
-      }
-
-url = 'https://finviz.com/screener.ashx?v=111'# % (bank_id, page) # url страницы
-result = pd.DataFrame()
-r = requests.get(url, headers = headers)
-soup = BeautifulSoup(r.text)
-tables = soup.find_all('table',{'bgcollor': '#d3d3d3'})
-for item in tables:
-    res = parse_table(item)
-    result = result.append(res,ignore_index=True)
-result.to_excel("1.xlsx")
+import csv, sqlite3
+import pandas
+from sqlalchemy import create_engine
+con = sqlite3.connect("1.db") # change to 'sqlite:///your_filename.db'
+cur = con.cursor()
+engine = create_engine('sqlite:///1.db')
+#cur.execute("CREATE TABLE t") # use your column names here
+#with open('1.csv',r) as f:
+df = pandas.read_csv('data_file.csv')
+df.to_sql('stocks', con=engine, if_exists='replace',index=True)
+df = pandas.read_sql_table('stocks',engine)
+#print(df)

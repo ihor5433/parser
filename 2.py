@@ -38,8 +38,8 @@ def getTitle(url):
 #print(responce.text)
 a = convert_html(url).get_text()
 d = json.loads(a)
-df = pd.DataFrame.from_dict(d, orient = 'split')
-print(df)
+df = pd.DataFrame.from_dict(d, orient = 'index')
+df.to_csv('json.csv')
 #a = convert_html(url).text
 #df=pd.DataFrame(responce.json())
 #print(df)

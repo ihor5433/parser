@@ -1,51 +1,56 @@
-from requests import get as rget
-import requests
-from pandas import pandas as pd
 import json
-from bs4 import BeautifulSoup as bs
-import seaborn
+import csv
+from pandas import read_csv 
+with open("data/fundamental/0.json") as js:
+    data = json.load(js)
+stock = data['symbol']
+annualReports = data["annualReports"]
+quarterlyReports = data['quarterlyReports']
+data_file = open("data_file.csv", "w")
+
+csv_writer = csv.writer(data_file)
+count = 0
 
 
-url = 'https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=IMBI&apikey=UQGWFV8GJ5UKWK2T'
-r = rget(url).json()
-#soup = bs(r,features='lxml').get_text()
-print(type(r))
-#print(r)
-# d = json.loads(r)
-# c = json.dumps(r)
-# print(type(c))
-
-with open('data.json','w') as f:
-    json.dump(r,f)
-with open('data.json','r') as read:
-    data = json.load(read)
-
-df = pd.DataFrame.from_dict(r, orient='index')
-#df.transpose()
-#print(df)
-
-a = pd.read_json(r'data.json',orient='index')
-print(a)
-      #data = seaborn.load_dataset(soup)
-#print(data.head())
-#print(df)
-
-df.to_csv('1112.csv',index=None)
-#a.to_json('1111.json')
-# base_url = 'https://www.alphavantage.co/query?'
-# params = {'function': 'INCOME_STATEMENT',
-#   'symbol': 'IMBI', 
-#   'apikey': 'UQGWFV8GJ5UKWK2T'}
-
-# response = rget(base_url, params=params)
-# response_dict = response.json()
-# header = response.json()
-# df = pd.DataFrame(response_dict)
-# print(df)
+for rep in annualReports:
+    if count == 0:
+        header = rep.keys()
+        csv_writer.writerow(header)
+        count += 1
+    csv_writer.writerow(rep.values())
+for rep in quarterlyReports:
+    # if count == 0:
+    #     header = 'quarterlyReports'
+    #     csv_writer.writerow(header)
+    #     count += 1
+    
+    csv_writer.writerow(rep.values())
+# csv_writer.writerow(['sdfsdf'])
+# data_file.close()
+   
+# with open('1.csv', 'w') as f:
+#     writer = csv.DictWriter(f,fieldnames= annualReports[0])
+#     writer.writeheader()
+    
+# df = read_csv('data_file.csv')
+# df['Ticker'] = stock
+# df.to_csv('data_file.csv',index=False)
 
 
-params = {'function': 'i' , 
-          'symbol':  'i' ,
-         'apikey': 'i'
+#     for d in annualReports:
+#         writer.writerow(d)
+#     for d in quarterlyReports:
+#         writer.writerow(d)
 
-}
+# # with open('1.csv', newline='') as fd:
+# #     r = csv.reader(fd)
+# #     data1 = [line for line in r]
+    
+# # with open('1.csv', 'a', newline='') as fd:
+# #     w = csv.writer(fd)
+# #     w.writerow(['dsfsdf','fdgdfg'])
+# #     w.writerow(data1)
+
+# df = read_csv('1.csv')
+# df['new_column'] = ''
+# df.to_csv('1.csv',index=False)
