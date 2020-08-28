@@ -10,7 +10,7 @@ c = 'INCOME_STATEMENT'
 # if a == 2:
 #     break
 url = "https://www.alphavantage.co/query?"
-function = b
+function = c
 symbol = 'amd'
 api_key = "UQGWFV8GJ5UKWK2T"
 params = {"function": function, "symbol": symbol, "apikey": api_key}

@@ -6,15 +6,18 @@ with open("data/fundamental/0.json") as js:
 stock = data['symbol']
 annualReports = data["annualReports"]
 quarterlyReports = data['quarterlyReports']
-data_file = open("data_file.csv", "w")
+data_file = open("data_file1.csv", "w")
 
 csv_writer = csv.writer(data_file)
 count = 0
 
 
+#csv_writer.writerow(stock)
 for rep in annualReports:
     if count == 0:
         header = rep.keys()
+        #header[0] ='sdfd'
+        #csv_writer.writerow('symbol')
         csv_writer.writerow(header)
         count += 1
     csv_writer.writerow(rep.values())
