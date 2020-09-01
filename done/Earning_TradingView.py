@@ -11,7 +11,7 @@ soup = convert_html(url)
 # r = rget(url, headers=hdr)
 
 
-def tradingview_earning(output_if_file_html = False, output=False ):
+def tradingview_earning(output_if_file_html=False, output=False):
     if exists("data/tview_earning.csv"):
         remove("data/tview_earning.csv")
     if getTitle(url) != None:
