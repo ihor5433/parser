@@ -21,25 +21,31 @@ def get_data_alphavantage(symbol, function):
         json.dump(r, f)
 
 
-def read_data_from_json(function):
+def read_data_from_json(symbol,function):
     with open("data/fundamental/temp/" + function + ".json") as js:
         data = json.load(js)
     annualReports = data["annualReports"]
     quarterlyReports = data["quarterlyReports"]
     data_file = open("data/fundamental/" + function + ".csv", "w")
-
+    data_file_annual_report = open("data/fundamental/" + function + "_annual_report.csv", "w")
     csv_writer = csv.writer(data_file)
+    csv_writer_anu_rep = csv.writer(data_file_annual_report)
     count = 0
 
     for rep in annualReports:
         if count == 0:
             header = rep.keys()
+            csv_writer_anu_rep.writerow(header)
+            count += 1
+        csv_writer_anu_rep.writerow(rep.values())
+    for rep in quarterlyReports:
+        if count == 1:
+            header = rep.keys()
             csv_writer.writerow(header)
             count += 1
         csv_writer.writerow(rep.values())
-    for rep in quarterlyReports:
-        csv_writer.writerow(rep.values())
 
 
 
-# get_data_alphavantage('amd',c)
+#get_data_alphavantage('amd',c)
+#read_data_from_json('abeo',i)
