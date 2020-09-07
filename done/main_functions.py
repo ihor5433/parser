@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 from os.path import exists
+import os
 from os import remove
 from urllib.request import Request, urlopen
 import urllib.error as ur  # import HTTPError
