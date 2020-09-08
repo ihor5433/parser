@@ -11,13 +11,7 @@ from progress.bar import IncrementalBar
 import tqdm
 import json
 import csv
-#import Earning_TradingView 
-hdr = {
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
-}
-# def soup():
-#     soup = bs(responce, features="lxml")
-#     return soup
+
     
 def convert_html(url):
     responce = rget(url, headers=hdr).text

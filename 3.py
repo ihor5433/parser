@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
-con = sqlite3.connect('quarterly.db')
+from Write_to_sql import path_quarterly_db
+con = sqlite3.connect(path_quarterly_db)
 
 # with con:
 #     cur = con.cursor()
@@ -8,7 +9,7 @@ con = sqlite3.connect('quarterly.db')
 #     rows = cur.fetchall()
 #     for row in rows:
 #         print(row)
-df = pd.read_sql_query('SELECT * FROM ABIO',con)
+df = pd.read_sql_query('SELECT * FROM AMD',con)
 #print(df)
 import matplotlib.pyplot as plt
 
