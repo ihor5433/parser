@@ -10,16 +10,13 @@ import Alphavantage as av
 
 path_annual_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/annual.db'))
 path_quarterly_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/quarterly.db'))
-path_stocks = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'stocks.txt'))
+path_stocks = os.path.abspath(os.path.join(os.path.dirname(__file__), '..','Files_txt','stocks.txt'))
 path_csv = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'fundamental'))
 
 
 symbol = open(path_stocks, 'r').read()
 symbol = symbol.split()
 
-basedir = os.path.abspath(os.path.dirname('data/fundamental/'))
-
-print(os.path.join('data', 'fundamental'))
 functions = ["INCOME_STATEMENT", "BALANCE_SHEET", "CASH_FLOW"]
 name_csv_file = ["INCOME_STATEMENT.csv", "BALANCE_SHEET.csv", "CASH_FLOW.csv"]
 
@@ -91,13 +88,13 @@ def insert_into_table_value(quarterlyTable, annualTable, name):
         con.commit()
         count += 1
 
-def run_script():
+def run_script(symbol):
     h = 0
     start_time1 = datetime.now()
     for stock in symbol:
         if h == 3:
             break
-        start_time = datetime.now()
+        #start_time = datetime.now()
         for param in functions:
             av.get_data_alphavantage(stock, param)
             av.read_data_from_json(param)
@@ -109,6 +106,7 @@ def run_script():
             time.sleep(1)
         h += 1
     print(datetime.now() - start_time1)
+
 if __name__ == '__main__':
     create_table_and_header('AMD')
     insert_into_table_value(path_quarterly_db, path_annual_db, 'AMD')
