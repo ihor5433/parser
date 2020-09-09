@@ -1,4 +1,4 @@
-from Html import *
+from General_functions import *
 
 
 hdr = {

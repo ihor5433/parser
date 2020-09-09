@@ -10,9 +10,8 @@ import Alphavantage as av
 
 path_annual_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/annual.db'))
 path_quarterly_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/quarterly.db'))
-path_stocks = os.path.abspath(os.path.join(os.path.dirname(__file__), '..','Files_txt','stocks.txt'))
+path_stocks = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Files_txt', 'stocks.txt'))
 path_csv = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'fundamental'))
-
 
 symbol = open(path_stocks, 'r').read()
 symbol = symbol.split()
@@ -51,11 +50,13 @@ def create_table_and_header(name_table):
             listColumn = listColumn + i + ","
         listColumn = listColumn[:-1]
 
-        cur.execute("create table if not exists {} (id_date INTEGER PRIMARY KEY AUTOINCREMENT, fiscalDateEnding DATE UNIQUE ON CONFLICT IGNORE,{})".format(name_table,listColumn))
+        cur.execute(
+            "create table if not exists {} (id_date INTEGER PRIMARY KEY AUTOINCREMENT, fiscalDateEnding DATE UNIQUE ON CONFLICT IGNORE,{})".format(
+                name_table, listColumn))
 
         count += 1
-    con.commit()
-    return listColumn
+        con.commit()
+    # return listColumn
 
 
 def insert_into_table_value(quarterlyTable, annualTable, name):
@@ -75,43 +76,39 @@ def insert_into_table_value(quarterlyTable, annualTable, name):
                 for row in reader:
                     if a == 0:
                         column_set = row
-                        a+=1
+                        a += 1
                         continue
                     if len(row) == 0:
                         continue
-                    cur.execute("INSERT INTO {} (fiscalDateEnding) VALUES('{}')".format(name,row[0]))
-                    for i in range(len(row)):
-                        if i != 1:
+                    cur.execute("INSERT INTO {} (fiscalDateEnding) VALUES('{}')".format(name, row[0]))
+                    for ii in range(len(row)):
+                        if ii != 1:
                             cur.execute(
-                                "update {} set {}='{}' where fiscalDateEnding= '{}'".format(name, column_set[i],
-                                                                                            row[i], row[0]))
+                                "update {} set {}='{}' where fiscalDateEnding= '{}'".format(name, column_set[ii],
+                                                                                            row[ii], row[0]))
         con.commit()
         count += 1
 
-def run_script(symbol):
-    h = 0
+
+def DownloadData(symbol, api):
     start_time1 = datetime.now()
-    for stock in symbol:
-        if h == 3:
-            break
-        #start_time = datetime.now()
-        for param in functions:
-            av.get_data_alphavantage(stock, param)
-            av.read_data_from_json(param)
-        print('Обработка запроса  ',datetime.now() - start_time)
-        create_table_and_header(stock)
-        insert_into_table_value(path_quarterly_db, path_annual_db, stock)
-        print("Прошел " + str(h) + " цыкл")
-        for i in trange(60):
-            time.sleep(1)
-        h += 1
+    av.delete_folder(symbol)
+    for param in functions:
+        av.get_data_alphavantage(symbol, param, api)
+        av.read_data_from_json(symbol, param)
+    # av.delete_temp_files(symbol,param)
+    create_table_and_header(symbol)
+    insert_into_table_value(path_quarterly_db, path_annual_db, symbol)
+    # print("Прошел " + str(h) + " цыкл")
     print(datetime.now() - start_time1)
 
+
 if __name__ == '__main__':
-    create_table_and_header('AMD')
-    insert_into_table_value(path_quarterly_db, path_annual_db, 'AMD')
+    # create_table_and_header('AMD')
+    # insert_into_table_value(path_quarterly_db, path_annual_db, 'AMD')
     if os.path.exists(path_annual_db):
         os.remove(path_annual_db)
     if os.path.exists(path_quarterly_db):
         os.remove(path_quarterly_db)
+    DownloadData('AMD', 'JOHTN3ROUBPZM8ED')
 # todo сделать 5-10 api и начать выкачивать данные в json. потом я автоматом переведу в sql.

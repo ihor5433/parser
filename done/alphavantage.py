@@ -13,8 +13,10 @@ path_json = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'
 path_csv = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'fundamental'))
 path_api = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Files_txt', 'api_key.txt'))
 path_result = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
-file = ''
-def get_data_alphavantage(symbol, function,api_key,only_var =False):
+
+
+# file = os.path.join(path_json, symbol + '_' + function) + ".json"
+def get_data_alphavantage(symbol, function, api_key, only_var=False):
     """
     Получаем json из alphavantage по критериям
     
@@ -25,7 +27,7 @@ def get_data_alphavantage(symbol, function,api_key,only_var =False):
         return
     file = os.path.join(path_json, symbol + '_' + function) + ".json"
     url = "https://www.alphavantage.co/query?"
-    api_key = "UQGWFV8GJ5UKWK2T"
+    # api_key = "UQGWFV8GJ5UKWK2T"
     params = {"function": function, "symbol": symbol, "apikey": api_key}
     r = rget(url, params=params).json()
     """Записываем ответ в json"""
@@ -34,14 +36,14 @@ def get_data_alphavantage(symbol, function,api_key,only_var =False):
         json.dump(r, f)
 
 
-def read_data_from_json(symbol,function):
+def read_data_from_json(symbol, function):
+    file = os.path.join(path_json, symbol + '_' + function) + ".json"
     with open(file) as js:
         data = json.load(js)
-    path = os.path.join(path_result,symbol)
-    if os.path.exists(path):
-        shutil.rmtree(path)
-
-    os.mkdir(path)
+    path_result = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+    path = os.path.join(path_result, symbol)
+    if not os.path.exists(path):
+        os.mkdir(path)
     annualReports = data["annualReports"]
     quarterlyReports = data["quarterlyReports"]
     data_file = open(os.path.join(path, function) + ".csv", "w")
@@ -63,21 +65,39 @@ def read_data_from_json(symbol,function):
             count += 1
         csv_writer.writerow(rep.values())
 
-def delete_temp_files(file):
+
+def delete_temp_files(symbol, function):
+    file = os.path.join(path_json, symbol + '_' + function) + ".json"
     if os.path.exists(file):
         os.remove(file)
+
+
 def read_ticker():
-    f = open(os.path.join(path_csv,'ticker.txt')).read()
-    f = f.split()
+    f = open(os.path.join(path_csv, 'ticker.txt')).read()
+    n = f.replace(',', ' ')
+    f = n.split()
     return f
+
+
 def read_api_key(path_api=path_api):
-    f = open(path_api,'r').read()
+    f = open(path_api, 'r').read()
     f = f.split()
     return f
-#read_api_key(path_api)
-#get_data_alphavantage('AMD',i,read_api_key()[0],only_var=True)
-#os.remove(file)
-#read_data_from_json('AMD',i)
-#read_data_from_json('INCOME_STATEMENT')
-if __name__ =="__main__":
-    print(read_ticker())
+
+
+def delete_folder(symbol):
+    path_result = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+    path = os.path.join(path_result, symbol)
+    if os.path.exists(path):
+        shutil.rmtree(path)
+
+
+# read_api_key(path_api)
+# get_data_alphavantage('AMD',i,read_api_key()[0],only_var=True)
+# os.remove(file)
+# read_data_from_json('AMD',i)
+# read_data_from_json('INCOME_STATEMENT')
+if __name__ == "__main__":
+    a = read_ticker()
+    print(a[:100])
+    read_data_from_json('AKO-A', 'INCOME_STATEMENT')
