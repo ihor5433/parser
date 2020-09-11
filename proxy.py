@@ -25,13 +25,20 @@ def proxy():
     soup = bs(r,features="lxml")
     divs = soup.find('div',{'class':'table_block'})
     tables_row = divs.find_all('tr')
-    open('prox.txt', 'w')
-    for row in tables_row[1:]:
-        row =row.text
-        a = row.split()
-        print(a)
-        with open('prox.txt', 'a', newline='') as w:
-            w.write(a[0]+'\n')
+    soup = bs(tables_row,features="lxml")
+    print(soup)
+    #tables_row1 = tables_row.find_all('td')
+    count = 0
+
+    for row in tables_row:
+
+        #a = row.split()
+        #print(a)
+
+        print(row)
+        # with open('prox.txt', 'a', newline='') as w:
+        #     w.write(a[0]+'\n')
+        count+=5
 
 def handler(proxy):
     link = 'http://icanhazip.com/'
@@ -46,5 +53,5 @@ def handler(proxy):
         print('Прокси не валидный')
 
 
-handler('176.9.119.170:8080')
-#proxy()
+#handler('176.9.119.170:8080')#
+proxy()
