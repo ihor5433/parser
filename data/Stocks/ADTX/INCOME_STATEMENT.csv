@@ -1,0 +1,8 @@
+fiscalDateEnding,reportedCurrency,totalRevenue,totalOperatingExpense,costOfRevenue,grossProfit,ebit,netIncome,researchAndDevelopment,effectOfAccountingCharges,incomeBeforeTax,minorityInterest,sellingGeneralAdministrative,otherNonOperatingIncome,operatingIncome,otherOperatingExpense,interestExpense,taxProvision,interestIncome,netInterestIncome,extraordinaryItems,nonRecurring,otherItems,incomeTaxExpense,totalOtherIncomeExpense,discontinuedOperations,netIncomeFromContinuingOperations,netIncomeApplicableToCommonShares,preferredStockAndOtherAdjustments
+2020-06-30,USD,0,398480,None,None,-398480,-534317,28294,None,-534317,None,370186,None,-398480,None,135837,0,None,-135837,None,None,None,None,None,None,-534317,-534317,None
+2020-03-31,USD,0,1056798,None,None,-1024298,-1189363,200371,None,-1189363,None,856427,None,-1056798,None,165065,0,None,-165065,None,None,None,None,32500,None,-1189363,-1189363,None
+2019-12-31,USD,0,990635,None,None,-990635,-991084,66992,None,-991084,None,923643,None,-990635,None,449,0,-450,-449,None,None,None,None,0,None,-991084,-991084,None
+2019-09-30,USD,0,1079949,None,None,-1079949,-1080403,19603,None,-1080403,None,1060346,None,-1079949,None,454,0,None,-454,None,None,None,None,0,None,-1080403,None,None
+2019-06-30,USD,0,2555525,None,None,-2555525,-2555973,43978,None,-2555973,None,2511547,None,-2555525,None,448,0,None,-448,None,None,None,None,None,None,-2555973,-2555973,None
+2019-03-31,USD,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,-1200268,None
+2018-12-31,USD,None,None,None,None,None,-500910,None,None,-500910,None,493200,None,-492610,None,None,None,-8300,None,None,None,None,None,None,None,None,-500912,None

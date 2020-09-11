@@ -1,0 +1,6 @@
+fiscalDateEnding,reportedCurrency,investments,changeInLiabilities,cashflowFromInvestment,otherCashflowFromInvestment,netBorrowings,cashflowFromFinancing,otherCashflowFromFinancing,changeInOperatingActivities,netIncome,changeInCash,operatingCashflow,otherOperatingCashflow,depreciation,dividendPayout,stockSaleAndPurchase,changeInInventory,changeInAccountReceivables,changeInNetIncome,capitalExpenditures,changeInReceivables,changeInExchangeRate,changeInCashAndCashEquivalents
+2019-12-31,CAD,-3751770,178447,-3751770,None,1475729,1475729,None,None,-3763075,-4168366,-1892325,None,145631,None,None,None,243699,751353,427597,None,None,None
+2018-12-31,CAD,-18171752,290182,-18171752,-7694900,1475729,8837719,-618841,0,-3511667,-11253954,-1919921,0,28277,0,8855000,0,-35453,1308740,8497704,0,0,0
+2017-12-31,CAD,-12808053,-178511,-12808053,-3642830,1475729,22047348,-22541,0,-5231295,6564528,-2674767,0,28274,0,22250580,0,11935,2694830,3947900,0,0,0
+2016-12-31,CAD,-5524623,-209807,-5524623,-324600,1475729,11392987,17918,0,-4023504,3547228,-2321136,0,27039,0,11392990,0,2566,1882570,347138,0,0,0
+2015-12-31,CAD,0,28571.63,-4362810,-691320,0,5428950,-3000000,0,-1144530,-1949820,-3015970,0,131490,0,8428950,0,-247560.87,-1298221.23,3671490,0,0,0

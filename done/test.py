@@ -1,7 +1,6 @@
 import csv
 import os
 from Write_to_sql import path_csv
-from General_functions import print_percent_done
 from datetime import datetime
 from progress.bar import IncrementalBar
 from Alphavantage import read_ticker

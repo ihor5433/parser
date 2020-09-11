@@ -26,20 +26,15 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="4d4337ef-417a-4dd3-8774-4bfa7d2590f9">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+    <connection id="c0b63399-a611-4974-bbc9-ebc3c0922bbd">
+      <console name="MyDB" type="STANDARD" schema="main" session="Main"><![CDATA[attach 'annual.db' as db;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="4d4337ef-417a-4dd3-8774-4bfa7d2590f9" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="4d4337ef-417a-4dd3-8774-4bfa7d2590f9" dataset=".A" active-filter-id="" />
-    <filter-actions connection-id="4d4337ef-417a-4dd3-8774-4bfa7d2590f9" dataset="main.A" active-filter-id="" />
-    <filter-actions connection-id="4d4337ef-417a-4dd3-8774-4bfa7d2590f9" dataset="quarterly.AACG" active-filter-id="" />
+    <connection id="c0b63399-a611-4974-bbc9-ebc3c0922bbd" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,9 +61,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="4d4337ef-417a-4dd3-8774-4bfa7d2590f9" active="true">
+      <connection id="c0b63399-a611-4974-bbc9-ebc3c0922bbd" active="true">
         <database>
-          <name value="Connection" />
+          <name value="MyDB" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -81,8 +76,8 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="C:\Users\idmytrenko\Documents\Prog\Python\done\annual.db" schema="main" />
-            <file path="C:\Users\idmytrenko\Documents\Prog\Python\done\quarterly.db" schema="quarterly" />
+            <file path="C:\Users\idmytrenko\Documents\Prog\Python\db\annual.db" schema="main" />
+            <file path="C:\Users\idmytrenko\Documents\Prog\Python\db\quarterly.db" schema="quarterly" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -112,7 +107,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
-          <connect-automatically value="false" />
+          <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />

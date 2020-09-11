@@ -1,0 +1,6 @@
+fiscalDateEnding,reportedCurrency,investments,changeInLiabilities,cashflowFromInvestment,otherCashflowFromInvestment,netBorrowings,cashflowFromFinancing,otherCashflowFromFinancing,changeInOperatingActivities,netIncome,changeInCash,operatingCashflow,otherOperatingCashflow,depreciation,dividendPayout,stockSaleAndPurchase,changeInInventory,changeInAccountReceivables,changeInNetIncome,capitalExpenditures,changeInReceivables,changeInExchangeRate,changeInCashAndCashEquivalents
+2020-03-31,USD,8138000,-3389000,8138000,8457000,-1556000,13176000,None,-403000,-25513000,-2631000,-22944000,None,2320000,None,14732000,None,None,3460000,319000,None,None,None
+2019-03-31,CAD,-9089275.01,7444000,-9442000,-8908000,-1556000,44084781.31,-44000,-636000,-38620431.40,10708508.09,-24322947.87,0,2117285.80,0,45690000,0,-42357.32,6058000,524266.03,0,0,0
+2018-03-31,CAD,-318256.79,4898000,-411000,70000,-1556000,8832206.66,-43000,-762000,-16651566.89,-1199464.15,-9694055.33,0,2069056.30,0,-30973.90,0,-428214.12,2730000,352328.08,0,0,0
+2017-03-31,USD,489017.07,324923,6358154,138462,-1556000,5080681,-16615,228000,-8324944,4992598,-6422770,0,163583,0,5094004,0,10186.76,700615,1870466,0,0,0
+2017-02-28,USD,7105000,None,5216000,None,None,5216000,-14000,846000,-7911000,5697000,-4690000,None,1897000,None,5229000,None,None,478000,1890000,None,None,None

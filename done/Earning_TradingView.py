@@ -1,5 +1,11 @@
-from General_functions import *
+from os import remove
+from os.path import exists, join
+from urllib.request import Request, urlopen
 
+import pandas as pd
+from bs4 import BeautifulSoup as bs
+
+from General_functions import getTitle, convert_html, path
 
 hdr = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
@@ -12,8 +18,8 @@ soup = convert_html(url)
 
 
 def tradingview_earning(output_if_file_html=False, output=False):
-    if exists("data/tview_earning.csv"):
-        remove("data/tview_earning.csv")
+    if exists(join(path('csv'),'tview_earning.csv')):
+        remove(join(path('csv'),'tview_earning.csv'))
     if getTitle(url) != None:
         return getTitle(url)
     html = Request(url, headers=hdr)
@@ -45,5 +51,5 @@ def tradingview_earning(output_if_file_html=False, output=False):
     df = pd.DataFrame(res)
     if output == True:
         print(df)
-    df.to_csv("data/tview_earning.csv")
+    df.to_csv(join(path('csv'),'tview_earning.csv'))
 

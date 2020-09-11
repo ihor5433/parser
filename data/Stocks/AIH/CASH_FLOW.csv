@@ -1,0 +1,9 @@
+fiscalDateEnding,reportedCurrency,investments,changeInLiabilities,cashflowFromInvestment,otherCashflowFromInvestment,netBorrowings,cashflowFromFinancing,otherCashflowFromFinancing,changeInOperatingActivities,netIncome,changeInCash,operatingCashflow,otherOperatingCashflow,depreciation,dividendPayout,stockSaleAndPurchase,changeInInventory,changeInAccountReceivables,changeInNetIncome,capitalExpenditures,changeInReceivables,changeInExchangeRate,changeInCashAndCashEquivalents
+2020-03-31,CNY,None,0,None,None,None,None,None,None,-79100000,None,None,None,None,None,None,None,None,None,0,None,None,None
+2019-12-31,CNY,0,0,0,0,0,0,0,0,-58418000,0,0,0,0,0,0,0,0,0,0,0,0,0
+2019-09-30,CNY,0,0,0,0,0,0,0,0,115674000,0,0,0,0,0,0,0,0,0,0,0,0,0
+2019-06-30,CNY,-0.10,0,-72823000,-20315000,5090500,3991000,-6190000,0,57295000,-23230000,45691000,0,0.60,0,0,0,0,-36758500,52508000,0,0,0
+2019-03-31,CNY,-0.12,0,-36411500,6951000,5090500,0.07,-3095000,0,1.43,-0.42,22845500,0,0.72,0,0,0,0,-36758500,0.94,0,0,0
+2018-09-30,USD,-0.69,0,-5300921.54,1011952.42,741093.92,0.40,-450581.61,0,2.39,-2.34,3325932.83,0,4.01,0,0,0,0,-5351439.10,5.27,0,0,0
+2018-06-30,USD,-509223.16,0,-4202684.46,156793.64,1642171.57,1404769.05,-237402.52,0,1209883.02,-1883923.22,924040.19,0,1212132.57,0,0,0,0,-1508473.31,1822810.44,0,0,0
+2018-03-31,USD,-540641.67,0,-4461985.51,166467.64,1743491.76,1491441.76,-252050,0,1284531.49,-2000159.22,981052.46,0,1286919.83,0,0,0,0,-1601544.46,1935275.85,0,0,0
