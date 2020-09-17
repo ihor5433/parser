@@ -2,4 +2,4 @@ data/fundamental/temp/*
 data/Stocks/*
 db/*
 !data/fundamental/temp/
-!data/Stocks
+!data/Stocks/
