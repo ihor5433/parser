@@ -12,12 +12,13 @@ hdr = {
 }
 url = "https://www.tradingview.com/markets/stocks-usa/earnings/"
 
-soup = convert_html(url)
+
 
 # r = rget(url, headers=hdr)
 
 
 def tradingview_earning(output_if_file_html=False, output=False):
+    #soup = convert_html(url)
     if exists(join(path('csv'),'tview_earning.csv')):
         remove(join(path('csv'),'tview_earning.csv'))
     if getTitle(url) != None:
