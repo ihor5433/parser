@@ -1,5 +1,7 @@
 data/fundamental/temp/*
 data/Stocks/*
 db/*
+.idea/
 !data/fundamental/temp/
 !data/Stocks/
+!/Test/Untitled.ipynb
