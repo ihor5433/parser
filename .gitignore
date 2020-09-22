@@ -1,7 +1,9 @@
 data/fundamental/temp/*
 data/Stocks/*
 db/*
-.idea/
+.idea/*
 !data/fundamental/temp/
 !data/Stocks/
 !/Test/Untitled.ipynb
+/.ipynb_checkpoints/
+/.vscode/
