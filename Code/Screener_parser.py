@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import tqdm
 
-from General_functions import getTitle, path, convert_html
+from Code.General_functions import get_title, path, convert_html
 
 hdr = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
@@ -35,14 +35,14 @@ def finviz_all_stocks(url=url_without_exFund, output=False, output_in_file_html=
         url = url_two
     if os.path.exists(os.path.join(path('csv'), 'finviz_list.csv')):
         os.remove(os.path.join(path('csv'), 'finviz_list.csv'))
-    if getTitle(url) != None:
-        return getTitle(url)
+    if get_title(url) != None:
+        return get_title(url)
     page_code = 1
     url1 = url + str(page_code)
     for i in tqdm.trange(last_page(url) + 1):
 
         soup = convert_html(url1)
-        if output_in_file_html == True:
+        if output_in_file_html:
             # проверка выводимого текста
             with open("output_test.html", "w", encoding="utf-8") as file:
                 file.write(str(soup))
@@ -60,7 +60,7 @@ def finviz_all_stocks(url=url_without_exFund, output=False, output_in_file_html=
 
         df.to_csv(os.path.join(path('csv'), 'finviz_list.csv'), mode="a", header=False)
 
-        if output == True:
+        if output:
             print(df)
         page_code += 20
         url1 = url + str(page_code)

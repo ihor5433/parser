@@ -5,8 +5,8 @@ import os
 import shutil
 from urllib3.exceptions import ConnectionError
 import requests
-
-import General_functions as gf
+import Code.General_functions as gf
+#import General_functions as gf
 
 i = "INCOME_STATEMENT"
 b = "BALANCE_SHEET"

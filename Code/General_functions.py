@@ -20,14 +20,14 @@ def path(path: str):
 
         '''
 
-    path_ticker = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Files_txt', 'ticker.txt'))
-    path_api = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Files_txt', 'api_key.txt'))
+    path_ticker = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data_txt', 'ticker.txt'))
+    path_api = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data_txt', 'api_key.txt'))
     path_result = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'Stocks'))
     path_json = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'fundamental', 'temp'))
     path_csv = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'fundamental'))
     path_annual_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/annual.db'))
     path_quarterly_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/quarterly.db'))
-    missed_stock = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Files_txt', 'missed_stocks.txt'))
+    missed_stock = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data_txt', 'missed_stocks.txt'))
 
     if path == 'api':
         return path_api

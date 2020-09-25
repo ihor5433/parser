@@ -2,7 +2,7 @@ import csv
 import os
 import sqlite3
 
-import General_functions as gf
+import Code.General_functions as gf
 from datetime import datetime
 path_annual_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/annual.db'))
 path_quarterly_db = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db/quarterly.db'))
