@@ -131,7 +131,8 @@ if __name__ == "__main__":
                     continue
             continue
         elif a == 2:
-            Earning_TradingView.tradingview_earning()
+            Earning_TradingView.tradingview_earning(output=True)
+            input()
         elif a == 3:
             Earning_TradingView.tradingview_earning()
             Screener_parser.finviz_all_stocks()
